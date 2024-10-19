@@ -1,0 +1,3 @@
+#!/bin/execlineb -P
+# not gnuconfigure but compatible (patched)
+arbor-mk-gnuconfigure install
