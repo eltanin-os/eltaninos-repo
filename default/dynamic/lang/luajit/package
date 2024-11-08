@@ -1,15 +1,17 @@
 name:luajit
-version:2.1.0-beta3
+git_commit:97813fb924edf822455f91a5fbbdfdb349e5984f
+version:2.1.$git_commit
 license:mit
 description:Just-In-Time compiler for Lua.
-cksum:4ba4f4aa5a00801c6ac01a30d5977e88a82d45c9b921b02ee6d7b50c33c3a853e7f446728705f4ca179f108da0929e0354c1b557f1cb1f185195537d2130f09b
-src:LuaJIT-2.1.0-beta3
+cksum:3a375aff8d7e3ad072200c147bd7b5551d83dacb0a41fe32597a7094e9d865e878e40bdb33faad79dfcff50378221d997ba2fa7c9b142b4659f414cf84d48754
+src:LuaJIT-$git_commit
 urls{
-https://luajit.org/download/LuaJIT-$version.tar.gz
+https://github.com/LuaJIT/LuaJIT/archive/${git_commit}.tar.gz
 }
 hostdeps{
 stdenv
 }
 makedeps{
 libc
+libunwind
 }
