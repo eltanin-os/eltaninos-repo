@@ -1,8 +1,8 @@
 name:xcb-proto
-version:1.16.0
+version:1.17.0
 license:mit
 description:X.Org X11 protocol C binding protocol.
-cksum:3b4e2834b4970052bd2c5b0667ba4df77581509b2116d468c598220d279e64acb70e6b4b91af10c9aef4176157f4bb596e8c89cdaa30aa38806fa4a45c1e31ab
+cksum:4d3611e554329e36a29f8d8c6db8ac1e9e46a28d05aa52e0b3b9fa183d5757a3b88032dd476ff46cbd94da1a259503cf5900a6ef5bc98c91162114289799db06
 urls{
 https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-$version.tar.xz
 }
