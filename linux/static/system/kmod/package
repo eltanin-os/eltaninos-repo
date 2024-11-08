@@ -1,8 +1,8 @@
 name:kmod
-version:31
+version:33
 license:gpl-2
 description:Linux kernel module handling.
-cksum:f52f098be4d469b317ab45688c7896ef4eaefc4ca4115537c0da4cc7d0177b7b1260010cba9a1f2bd2cacfe6ef43738936e58ec5838e1c8fc9aef16b1714826e
+cksum:66c35f00311e495c3560d1aa60d525184169a483a83626f74f4ad04661c8967762332bb54e001067d47edcdd6c0551d183689bc2fbef2ac8084dd1fe51e651db
 platforms{
 linux
 }
@@ -10,6 +10,7 @@ urls{
 http://mirrors.edge.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz
 }
 hostdeps{
+scdoc
 stdenv
 }
 makedeps{

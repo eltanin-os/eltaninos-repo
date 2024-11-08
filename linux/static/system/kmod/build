@@ -2,4 +2,5 @@
 if { arbor-utils-sed configure "s/.*is not supported by kmod.*/true/g" }
 export ARBOR_MK_CONFIGURE_ARGS "--with-xz;--with-zlib"
 if { arbor-mk-gnuconfigure install }
+if { arbor-utils-install -d bin lsmod rmmod insmod modinfo modprobe depmod }
 arbor-utils-install -l bin kmod lsmod rmmod insmod modinfo modprobe depmod
