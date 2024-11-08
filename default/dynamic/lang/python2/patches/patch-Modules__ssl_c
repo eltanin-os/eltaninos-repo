@@ -1,10 +1,7 @@
-XXX maybe this can go away now we have auto-init, I'm not sure exactly
-what python's lock protects
-
-Index: Modules/_ssl.c
---- a/Modules/_ssl.c.orig
-+++ b/Modules/_ssl.c
-@@ -164,6 +164,9 @@ struct py_ssl_library_code {
+diff -Naur a/Modules/_ssl.c b/Modules/_ssl.c
+--- a/Modules/_ssl.c	2020-04-19 18:13:39.000000000 -0300
++++ b/Modules/_ssl.c	2024-10-24 14:48:59.912982694 -0300
+@@ -164,6 +164,9 @@
  #if defined(OPENSSL_VERSION_1_1) && !defined(OPENSSL_NO_SSL2)
  #define OPENSSL_NO_SSL2
  #endif
@@ -14,3 +11,11 @@ Index: Modules/_ssl.c
  
  #ifndef PY_OPENSSL_1_1_API
  /* OpenSSL 1.1 API shims for OpenSSL < 1.1.0 and LibreSSL < 2.7.0 */
+@@ -592,7 +595,6 @@
+     Py_INCREF(sslctx);
+ 
+     /* Make sure the SSL error state is initialized */
+-    (void) ERR_get_state();
+     ERR_clear_error();
+ 
+     PySSL_BEGIN_ALLOW_THREADS
