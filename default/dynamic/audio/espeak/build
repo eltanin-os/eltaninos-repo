@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+cd src
+if { mv portaudio19.h portaudio.h }
+arbor-mk-gmake install

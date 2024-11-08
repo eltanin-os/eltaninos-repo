@@ -1,0 +1,15 @@
+name:espeak
+version:1.48.04
+license:gpl-3+
+description:Speech synthesizer for English and other languages.
+cksum:8bbbea9445d40a891f04f094bc9768b99a693d5d5193bfc36a88260e251df9a2b8d8248dd893a4b1264989fee4ecb97d0f023069b92f60d34a85c64a534deb6c
+urls{
+https://downloads.eltaninos.org/mirrors/$name-$version.tar.lz
+}
+hostdeps{
+stdenv
+}
+makedeps{
+libc
+portaudio
+}
