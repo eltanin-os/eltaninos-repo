@@ -1,11 +1,11 @@
 name:liba52
-version:0.7.4
+version:0.8.0
 license:gpl-2
 description:Free ATSC A/52 stream decoder library.
-cksum:4ad5ac2387da2331d0e5274ac8ee19d26416e5b505e400da86e01e507d9658394d8ba8b17ee4512e07cc02c2ff7b69948c2cfa509bfd4446cab491baf20efe7d
+cksum:ff3d4d7aacd4dd17137906cc432fbb5beb3dc6be0980f01c65678f30cd4a45fb15e14d75717aba7e9370b171519f064009ead30a0c7e2b0f415cfcf3e63ab005
 src:a52dec-$version
 urls{
-https://liba52.sourceforge.net/files/a52dec-$version.tar.gz
+https://distfiles.adelielinux.org/source/a52dec/a52dec-$version.tar.gz
 }
 hostdeps{
 stdenv
