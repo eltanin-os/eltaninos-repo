@@ -1,8 +1,8 @@
 name:zstd
-version:1.5.5
+version:1.5.6
 license:bsd-3,gpl-2
 description:Fast real-time compression algorithm.
-cksum:e67d1d4900f1136699fac80fe04f56e95f23e63d09d74401636b71a0dc3686cff6a09968f1870838788ae0f038b1f71f6ba6a4c67d701d320b6db398563191f5
+cksum:64508fdb38b69c645e9bbd747efb715c8f646a8934d02f437d3c2b308429034f98a071e19ad398e3badaf2cf61a64012a4225ff7849cd585006c6fc80798bae9
 urls{
 https://github.com/facebook/zstd/releases/download/v$version/zstd-$version.tar.gz
 }
