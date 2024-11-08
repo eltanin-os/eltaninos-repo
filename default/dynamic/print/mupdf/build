@@ -7,9 +7,11 @@ if {
 	heredoc 0
 "LINUX_OR_OPENBSD := yes
 USE_SYSTEM_FREETYPE := yes
+USE_SYSTEM_GLUT := no
 USE_SYSTEM_GUMBO := yes
 USE_SYSTEM_HARFBUZZ := yes
 USE_SYSTEM_JBIG2DEC := yes
+USE_SYSTEM_LCMS2 := no
 USE_SYSTEM_LIBJPEG := yes
 USE_SYSTEM_LIBS := yes
 USE_SYSTEM_OPENJPEG := yes
@@ -29,6 +31,6 @@ define PATH_INSTALL "prefix=${PREFIX};libdir=${LIBDIR};incdir=${INCDIR}"
 export ARBOR_MK_GMAKE_FLAGS "${PATH_INSTALL};build=release;shared=yes"
 export CFLAGS "-DFZ_ENABLE_JS=0"
 if { arbor-mk-gmake install-libs }
-if { arbor-utils-install -l lib libmupdf.so.23.11 libmupdf.so }
-if { arbor-utils-sed /tmp/files/mupdf.pc "s;@@VERSION@@;1.23.11;" } # XXX
+if { arbor-utils-install -l lib libmupdf.so.24.10 libmupdf.so }
+if { arbor-utils-sed /tmp/files/mupdf.pc "s;@@VERSION@@;1.24.10;" } # XXX
 arbor-utils-install pc /tmp/files/mupdf.pc
