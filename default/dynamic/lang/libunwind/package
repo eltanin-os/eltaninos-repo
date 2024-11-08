@@ -1,0 +1,14 @@
+name:libunwind
+version:1.8.1
+license:mit
+description:A C API to track and manipulate a program's call stack.
+cksum:92188a0a6484269ffc9b717d14f393cc3bd96e9c3e7f7f8ef24c5baf813ce19fde9dfac638e994c20e41b162206f420f02e418375df58cefc112c25645ce4b90
+urls{
+https://github.com/libunwind/libunwind/releases/download/v$version/libunwind-$version.tar.gz
+}
+hostdeps{
+stdenv
+}
+makedeps{
+libc
+}
