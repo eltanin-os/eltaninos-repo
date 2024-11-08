@@ -1,0 +1,255 @@
+diff -Naur a/src/platform/cmake/CMakeLists.Video b/src/platform/cmake/CMakeLists.Video
+--- a/src/platform/cmake/CMakeLists.Video	2024-10-15 19:25:57.000000000 -0300
++++ b/src/platform/cmake/CMakeLists.Video	2024-10-24 07:40:36.915012153 -0300
+@@ -12,142 +12,130 @@
+ #  INCLUDE_DIRS
+ #
+ 
++include(FindPkgConfig)
++
+ # reset if we are included multiple times with different video_platform
+ set(VIDEO_LIBRARIES "")
+ set(VIDEO_PLATFORM_SOURCES "")
+ 
+ # legacy platform for weaker platforms that don't have/support KMS
+ if(VIDEO_PLATFORM STREQUAL "egl-gles")
+-	if (NOT INPUT_PLATFORM)
+-		set(INPUT_PLATFORM "evdev")
+-	endif()
+-
+-	find_package(OpenGL COMPONENTS EGL REQUIRED QUIET)
+-	add_definitions(-DSHMIF_TUI_DISABLE_GPU)
+-
+-	if (GLES2_BCM_IMPLEMENTATION)
+-		amsg("broadcom (BCM) GLES implementation found, set BCM_ROOT to bad dir to disable")
+-		list(APPEND PLATFORM_DEFINITIONS WITH_BCM)
+-		set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/platform/egl-gles/video.c
+-			APPEND PROPERTY COMPILE_FLAGS -fgnu89-inline)
+-	endif()
+-
+-	list(APPEND INCLUDE_DIRS
+-		OpenGL::GLES2
+-		OpenGL::EGL
+-	)
+-
+-	set(LWA_PLATFORM_STR "stub")
+-	set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/egl-gles/video.c)
+-	list(APPEND VIDEO_LIBRARIES OpenGL::EGL)
++    if (NOT INPUT_PLATFORM)
++        set(INPUT_PLATFORM "evdev")
++    endif()
++
++    pkg_check_modules(EGL REQUIRED egl)
++    pkg_check_modules(GLES2 REQUIRED glesv2)
++    add_definitions(-DSHMIF_TUI_DISABLE_GPU)
++
++    if (GLES2_BCM_IMPLEMENTATION)
++        amsg("broadcom (BCM) GLES implementation found, set BCM_ROOT to bad dir to disable")
++        list(APPEND PLATFORM_DEFINITIONS WITH_BCM)
++        set_property(SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/platform/egl-gles/video.c
++            APPEND PROPERTY COMPILE_FLAGS -fgnu89-inline)
++    endif()
++
++    list(APPEND INCLUDE_DIRS
++        ${EGL_INCLUDE_DIRS}
++        ${GLES2_INCLUDE_DIRS}
++    )
++
++    set(LWA_PLATFORM_STR "stub")
++    set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/egl-gles/video.c)
++    list(APPEND VIDEO_LIBRARIES ${EGL_LIBRARIES} ${GLES2_LIBRARIES})
+ 
+-#
+-# will hopefully become the default on BSDs/linux
+-#
+ elseif(VIDEO_PLATFORM STREQUAL "egl-dri")
+-	if (NOT INPUT_PLATFORM)
+-		set(INPUT_PLATFORM "evdev")
+-	endif()
+-
+-	find_package(OpenGL COMPONENTS EGL QUIET)
+-	pkg_check_modules(GBMKMS REQUIRED QUIET libdrm gbm)
+-
+-	list(APPEND VIDEO_LIBRARIES
+-		OpenGL::EGL
+-		${GBMKMS_LINK_LIBRARIES}
+-	)
+-	list(APPEND INCLUDE_DIRS ${GBMKMS_INCLUDE_DIRS} OpenGL::EGL)
+-	set(VIDEO_PLATFORM_SOURCES
+-		${PLATFORM_ROOT}/egl-dri/video.c)
+-	if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+-		list(APPEND VIDEO_PLATFORM_SOURCES
+-				${PLATFORM_ROOT}/egl-dri/libbacklight.c)
+-	elseif (${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD")
+-		list(APPEND VIDEO_PLATFORM_SOURCES
+-				${PLATFORM_ROOT}/wscons/libbacklight.c)
+-	else()
+-		list(APPEND VIDEO_PLATFORM_SOURCES
+-				${PLATFORM_ROOT}/stub/libbacklight.c)
+-	endif()
+-	set(LWA_PLATFORM_STR "egl-dri-rnode")
+-	list(APPEND PLATFORM_DEFINITIONS ARCAN_EGL_DRI PLATFORM_VIDEO_DRMAUTH)
+-#
+-# only option on OSX/Windows currently, would also work for
+-# drawing to Wayland compositors (though the list of dependencies
+-# becomes rather nasty).
+-#
++    if (NOT INPUT_PLATFORM)
++        set(INPUT_PLATFORM "evdev")
++    endif()
++
++    pkg_check_modules(EGL REQUIRED egl)
++    pkg_check_modules(GBMKMS REQUIRED libdrm gbm)
++
++    list(APPEND VIDEO_LIBRARIES
++        ${EGL_LIBRARIES}
++        ${GBMKMS_LIBRARIES}
++    )
++    list(APPEND INCLUDE_DIRS ${GBMKMS_INCLUDE_DIRS} ${EGL_INCLUDE_DIRS})
++    set(VIDEO_PLATFORM_SOURCES
++        ${PLATFORM_ROOT}/egl-dri/video.c)
++
++    if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++        list(APPEND VIDEO_PLATFORM_SOURCES
++            ${PLATFORM_ROOT}/egl-dri/libbacklight.c)
++    elseif (${CMAKE_SYSTEM_NAME} MATCHES "OpenBSD")
++        list(APPEND VIDEO_PLATFORM_SOURCES
++            ${PLATFORM_ROOT}/wscons/libbacklight.c)
++    else()
++        list(APPEND VIDEO_PLATFORM_SOURCES
++            ${PLATFORM_ROOT}/stub/libbacklight.c)
++    endif()
++
++    set(LWA_PLATFORM_STR "egl-dri-rnode")
++    list(APPEND PLATFORM_DEFINITIONS ARCAN_EGL_DRI PLATFORM_VIDEO_DRMAUTH)
++
+ elseif (VIDEO_PLATFORM STREQUAL "sdl")
+-	if (NOT INPUT_PLATFORM)
+-		set(INPUT_PLATFORM "sdl")
+-	endif()
+-
+-	find_package(SDL REQUIRED QUIET)
+-
+-	list(APPEND INCLUDE_DIRS ${SDL_INCLUDE_DIR})
+-	list(APPEND VIDEO_LIBRARIES ${SDL_LIBRARY})
+-	set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/sdl/video.c)
+-
+-	if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+-		FIND_PACKAGE(OpenGL REQUIRED QUIET)
+-		set(VIDEO_LIBRARIES ${VIDEO_LIBRARIES} ${OPENGL_gl_LIBRARY})
+-		set(LWA_PLATFORM_STR "darwin")
+-	elseif( ${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+-		find_package(OpenGL COMPONENTS EGL REQUIRED QUIET)
+-		pkg_check_modules(GBMKMS REQUIRED QUIET libdrm gbm)
+-
+-		list(APPEND VIDEO_LIBRARIES
+-			${OPENGL_egl_LIBRARY}
+-			${GBMKMS_LINK_LIBRARIES}
+-		)
+-		list(APPEND INCLUDE_DIRS ${GBMKMS_INCLUDE_DIRS})
+-		set(LWA_PLATFORM_STR "egl-dri-rnode")
+-	else()
+-		set(LWA_PLATFORM_STR "x11")
+-		FIND_PACKAGE(X11 REQUIRED QUIET)
+-		set(VIDEO_LIBRARIES ${VIDEO_LIBRARIES} ${X11_LIBRARIES})
+-		list(APPEND INCLUDE_DIRS ${X11_INCLUDE_DIRS})
+-	endif()
++    if (NOT INPUT_PLATFORM)
++        set(INPUT_PLATFORM "sdl")
++    endif()
++
++    pkg_check_modules(SDL REQUIRED sdl)
++    list(APPEND INCLUDE_DIRS ${SDL_INCLUDE_DIRS})
++    list(APPEND VIDEO_LIBRARIES ${SDL_LIBRARIES})
++    set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/sdl/video.c)
++
++    if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
++        pkg_check_modules(GL REQUIRED gl)
++        list(APPEND VIDEO_LIBRARIES ${GL_LIBRARIES})
++        set(LWA_PLATFORM_STR "darwin")
++    elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++        pkg_check_modules(EGL REQUIRED egl)
++        pkg_check_modules(GBMKMS REQUIRED libdrm gbm)
++
++        list(APPEND VIDEO_LIBRARIES
++            ${EGL_LIBRARIES}
++            ${GBMKMS_LIBRARIES}
++        )
++        list(APPEND INCLUDE_DIRS ${GBMKMS_INCLUDE_DIRS})
++        set(LWA_PLATFORM_STR "egl-dri-rnode")
++    else()
++        set(LWA_PLATFORM_STR "x11")
++        pkg_check_modules(X11 REQUIRED x11)
++        list(APPEND VIDEO_LIBRARIES ${X11_LIBRARIES})
++        list(APPEND INCLUDE_DIRS ${X11_INCLUDE_DIRS})
++    endif()
+ 
+ elseif(VIDEO_PLATFORM STREQUAL "sdl2")
+-	if (NOT INPUT_PLATFORM)
+-		set(INPUT_PLATFORM "sdl2")
+-	endif()
+-
+-	find_package(SDL2 REQUIRED QUIET)
+-	list(APPEND INCLUDE_DIRS ${SDL2_INCLUDE_DIR})
+-	list(APPEND VIDEO_LIBRARIES ${SDL2_LIBRARY})
+-	set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/sdl2/video.c)
++    if (NOT INPUT_PLATFORM)
++        set(INPUT_PLATFORM "sdl2")
++    endif()
++
++    pkg_check_modules(SDL2 REQUIRED sdl2)
++    list(APPEND INCLUDE_DIRS ${SDL2_INCLUDE_DIRS})
++    list(APPEND VIDEO_LIBRARIES ${SDL2_LIBRARIES})
++    set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/sdl2/video.c)
+ 
+ elseif(VIDEO_PLATFORM STREQUAL "headless")
+-	if (NOT INPUT_PLATFORM)
+-		set(INPUT_PLATFORM "headless")
+-	endif()
+-	set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/headless/video.c)
+-	find_package(OpenGL COMPONENTS EGL QUIET)
+-	pkg_check_modules(GBMKMS REQUIRED QUIET libdrm gbm)
+-	list(APPEND VIDEO_LIBRARIES
+-		${OPENGL_egl_LIBRARY}
+-		${GBMKMS_LINK_LIBRARIES}
+-	)
+-	list(APPEND INCLUDE_DIRS ${GBMKMS_INCLUDE_DIRS})
++    if (NOT INPUT_PLATFORM)
++        set(INPUT_PLATFORM "headless")
++    endif()
++    set(VIDEO_PLATFORM_SOURCES ${PLATFORM_ROOT}/headless/video.c)
++    pkg_check_modules(EGL REQUIRED egl)
++    pkg_check_modules(GBMKMS REQUIRED libdrm gbm)
++    list(APPEND VIDEO_LIBRARIES
++        ${EGL_LIBRARIES}
++        ${GBMKMS_LIBRARIES}
++    )
++    list(APPEND INCLUDE_DIRS ${GBMKMS_INCLUDE_DIRS})
+ else()
+-# there are a few things that is just <invective> when it comes
+-# to CMake (outside the syntax itself and that it took 10+ years
+-# to get to a point where you can split strings across lines),
+-# one is why in the name of everything holy is a logging function
+-# the only way to do an exit? without the ability to reset a return value.
+-# That is just <series of invectives>. In addition, it seems
+-# impossible to not have it spew user-unfriendly garbage that hides
+-# the CLEAR AND OBVIOUS message you want to convey. Thanks.
+-	message(FATAL_ERROR
+-"${CLB_WHT}No video platform defined${CLB_RST}, see -DVIDEO_PLATFORM=xx above${CL_RST}.")
++    message(FATAL_ERROR
++        "${CLB_WHT}No video platform defined${CLB_RST}, see -DVIDEO_PLATFORM=xx above${CL_RST}.")
+ endif()
+ 
+ if (NOT ENABLE_LWA)
+-	if (VIDEO_PLATFORM STREQUAL "egl-dri")
+-		set(LWA_PLATFORM_STR "egl-dri-rnode")
+-	else()
+-		set(LWA_PLATFORM_STR "stub")
+-	endif()
++    if (VIDEO_PLATFORM STREQUAL "egl-dri")
++        set(LWA_PLATFORM_STR "egl-dri-rnode")
++    else()
++        set(LWA_PLATFORM_STR "stub")
++    endif()
+ endif()
+-

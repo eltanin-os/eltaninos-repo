@@ -1,8 +1,8 @@
 name:arcan
-version:1ebd87ac02
+version:a7e2f402bd
 license:bsd-3,gpl-2.0+,lgpl
 description:High-quality "Desktop Engine" [Display Server, Multimedia Framework, Game Engine].
-cksum:d2dcc4462321a75168673ff517ca13e99f4e6b8ea8fa260d23487e9da1c7cf109b1ac18bb554e0a114770b17fcabfdb7e604e0b97dae78b84e7c6d43d107d067
+cksum:7e712d2deeba729f7495878cd274f9b708e0aad7fe0052cf080f7420b195f5c477d07fd60fece7e2ff1258e2a1d77e6147acdffce61ed4610b30dfe9a49fae3d
 src:Arcan-$version
 urls{
 https://chiselapp.com/user/letoram/repository/arcan/tarball/$version/Arcan-$version.tar.gz
@@ -14,8 +14,11 @@ wayland-protocols
 }
 makedeps{
 bzip2-dynamic
+espeak
 freetype
 ffmpeg
+hunspell
+leptonica
 libc
 libpng
 libusb
@@ -28,9 +31,11 @@ mupdf
 openal-soft
 sdl2
 sqlite
+tesseract
 vlc
 wayland
 xcb-util
+xcb-util-image
 xcb-util-wm
 }
 rundeps{
