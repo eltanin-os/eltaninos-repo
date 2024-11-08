@@ -1,8 +1,8 @@
 name:libssh2
-version:1.11.0
+version:1.11.1
 license:bsd-3
 description:SSH2 protocol library.
-cksum:c5a26dcbc016962dc84bcf07e5876ca7ea7b75876f903a74a43440aea1aacad6710922e52da0abc070386a3b2fac742c506aa6593139e201ab100ac281e02736
+cksum:fe756aa0871a1f8a8f99aa6bcb5e14afaf8354555ca29b98ca6d46af71dab146cc19748a41b4da7ea77f6f5fb0f5097de5b9fc63967b057cc7b9bbb15a1e52ab
 urls{
 https://libssh2.org/download/libssh2-$version.tar.xz
 }
