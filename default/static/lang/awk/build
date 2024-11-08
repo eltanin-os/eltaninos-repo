@@ -1,0 +1,7 @@
+#!/bin/execlineb -P
+if {
+	export YFLAGS "-d -b awkgram"
+	arbor-mk-gmake
+}
+if { arbor-utils-install bin awk }
+arbor-utils-install man1 awk.1

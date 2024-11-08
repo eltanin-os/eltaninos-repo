@@ -1,0 +1,14 @@
+name:awk
+version:20240728
+license:mit
+description:Brian Kernighans pattern-directed scanning and processing language.
+cksum:8ed30fd269630e23f5ea244519bc6c17ca2ead9129f5d342656ba545672dc1185229848a374938e8b3e24d8211b8c796f9a8e686a5ef695833036b6a8e6253c9
+urls{
+https://github.com/onetrueawk/awk/archive/refs/tags/$version.tar.gz
+}
+hostdeps{
+stdenv
+}
+makedeps{
+libc
+}
