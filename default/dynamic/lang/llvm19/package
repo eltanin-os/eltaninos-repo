@@ -1,8 +1,8 @@
-name:llvm17
-version:17.0.6
+name:llvm19
+version:19.1.2
 license:apache-2.0
 description:Low Level Virtual Machine compiler infrastructure.
-cksum:dbd8adfbc95db7d95790f8557309e2e945355d451ee035e8752feab7f96b59d43dae5d6492e61e055e36727f53cb44a9f42e7306450e71c95ba295069c399b7d
+cksum:c2035e8558bd1f1c37d4d500b0055361801f270a6f8d6d7a6983efda2459adcec0b1574525355a09504fb89895de69e5d840c5f499e31f825b0ead1212bf7bfe
 src:llvm-project-$version.src
 urls{
 https://github.com/llvm/llvm-project/releases/download/llvmorg-$version/llvm-project-$version.src.tar.xz
