@@ -1,8 +1,8 @@
 name:iproute2
-version:6.7.0
+version:6.9.0
 license:gpl-2
 description:A set of utilities for Linux networking.
-cksum:524ed00642a635153ee2df66f4466325cc09552553e11212c6ea1726eb98921543b7cf6773541269776a44e13f198383c0f8e83efa51e4a8bcd0093004cb1430
+cksum:74557cf1e144d73f1c8eaa4fb9c4be3eb8a4864cb397682d8216dc6276086ec17195129bfb6eebde3ff45be3ca41832155251ec7db5a5bd7ea782d6b24f18a57
 platforms{
 linux
 }
