@@ -1,4 +1,4 @@
-.Dd September 29, 2021
+.Dd April 16, 2024
 .Dt S6-CONNLIMIT 8
 .Os
 .Sh NAME
@@ -37,14 +37,12 @@ without performing any check: no maximum number of connections has
 been defined.
 .Pp
 The
-.Xr s6-tcpserver4 8
-and
-.Xr s6-tcpserver6 8
-programs define the
+.Xr s6-tcpserver 8
+program defines the
 .Ev PROTO
 environment variable to
 .Dq TCP ,
-and spawn every child server with the
+and spawns every child server with the
 .Ev TCPCONNNUM
 environment variable set to the number of connections from the same IP
 address.
@@ -85,7 +83,7 @@ sockets, and that is why it has been moved to the s6 package.
 .Sh EXAMPLES
 The following command line:
 .Bd -literal -offset indent
-s6-tcpserver4 -v2 -c1000 -C40 1.2.3.4 80 \
+s6-tcpserver -v2 -c1000 -C40 1.2.3.4 80 \
   s6-tcpserver-access -v2 -RHl0 -i dir \
   s6-connlimit \
   prog...

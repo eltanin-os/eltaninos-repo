@@ -1,4 +1,4 @@
-.Dd September 29, 2021
+.Dd June 8, 2024
 .Dt S6-SVSTAT 8
 .Os
 .Sh NAME
@@ -7,7 +7,7 @@
 .Xr s6-supervise 8
 .Sh SYNOPSIS
 .Nm
-.Op Fl uwNrpest | o No up,wantedup,normallyup,ready,paused,pid,exitcode,signal,signum,updownsince,readysince,updownfor,readyfor
+.Op Fl uwNrpest | o No up,wantedup,normallyup,ready,paused,pid,pgid,exitcode,signal,signum,updownsince,readysince,updownfor,readyfor
 .Op Fl n
 .Ar servicedir
 .Sh DESCRIPTION
@@ -132,6 +132,10 @@ Print the pid of the supervised process.
 If the service is currently down,
 .Ql -1
 is printed instead.
+.It pgid
+Print the process group of the supervised process.
+If the service is currently down, print the process group of the last
+living instance of the service.
 .It exitcode
 Print the exit code of the last execution of
 .Pa ./run .
@@ -195,6 +199,9 @@ Equivalent to
 .It Fl p
 Equivalent to
 .Ql -o pid .
+.It Fl g
+Equivalent to
+.Ql -o pgid .
 .It Fl e
 Equivalent to
 .Ql -o exitcode .

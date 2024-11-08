@@ -1,4 +1,4 @@
-.Dd November 7, 2023
+.Dd April 16, 2024
 .Dt S6-NOTIFYONCHECK 8
 .Os
 .Sh NAME
@@ -63,7 +63,7 @@ even with daemons that do not natively implement the mechanism of
 writing a newline to a file descriptor of their choice when they're
 ready.
 .Pp
-Polling[1] is evil.
+Polling is evil[1].
 Please make sure you really have no other choice before writing a
 .Pa ./data/check
 program and using
@@ -268,7 +268,7 @@ System call failed.
 .Pp
 .Bk -words
 [1]
-.Lk https://skarnet.org/cgi-bin/archive.cgi?2:mss:1607:dfblejammjllfkggpcph
+.Lk https://skarnet.org/lists/supervision/1606.html
 .Ek
 .Pp
 [2]

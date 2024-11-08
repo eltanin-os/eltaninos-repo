@@ -1,4 +1,4 @@
-.Dd January 15, 2023
+.Dd October 12, 2024
 .Dt S6-SERVICE-DIRECTORY 7
 .Os
 .Sh NAME
@@ -39,7 +39,7 @@ contains the commands that will setup and run your
 service.
 .Bl -bullet -width x
 .It
-It is forked and executed by
+It is spawned by
 .Xr s6-supervise 8
 every time the service must be started, i.e. normally when
 .Xr s6-supervise 8
@@ -181,7 +181,7 @@ execution can be configured via the
 .Pa timeout-finish
 file, see below.
 .It
-The finish script is executed with three arguments:
+The finish script is executed with four arguments:
 .Bl -enum -width x
 .It
 the exit code from the run script (resp. 256 if the run script was
@@ -192,6 +192,17 @@ run script);
 .It
 the name of the service directory, the same that has been given to
 .Pa ./run .
+.It
+the process group id of the defunct run script.
+This is useful to clean up services that leave children behind: for
+instance,
+.Ql if test "$1" -gt 255 ; then kill -9 -- -"$4" ; fi
+in the finish script will
+.Dv SIGKILL
+all children processes if the service crashed.
+This is not an entirely reliable mechanism, because an annoying
+service could spawn children processes in a different process group,
+but it should catch most offenders.
 .El
 .It
 If the finish script exits 125, then
@@ -342,6 +353,23 @@ or
 .Ql s6-svc -r
 command is used.
 If the file does not exist, SIGTERM will be used by default.
+.It
+An optional regular file named
+.Pa flag-newpidns .
+If such a file exists:
+.Bl -bullet -width x
+.It
+On Linux (and potentially in the future, other systems that implement
+such functionality): at service starting time, the
+.Pa ./run
+script will be spawned in a new PID namespace.
+It will be pid 1 in that namespace.
+.It
+On systems that do not support the functionality: the service will
+fail to start, so do not create this file if you're unsure.
+(Yes, it is better behaviour than ignoring the flag.
+Having the flag silently ignored on some systems would be very bad.)
+.El
 .It
 A
 .Xr s6-fifodir 7

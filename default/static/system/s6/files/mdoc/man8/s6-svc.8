@@ -1,4 +1,4 @@
-.Dd November 7, 2023
+.Dd June 8, 2024
 .Dt S6-SVC 8
 .Os
 .Sh NAME
@@ -10,8 +10,8 @@ process
 .Nm
 .Op Fl wu | wU | wd | wD | wr | wR
 .Op Fl T Ar timeout
-.Op Fl s Ar signal | abqhkti12pcy
-.Op Fl roduDUxO
+.Op Fl s Ar signal | abqhkti12pcyrPCK
+.Op Fl oduDUxO
 .Ar servicedir
 .Sh DESCRIPTION
 .Nm
@@ -266,6 +266,26 @@ will not exit until the service has been started or restarted.
 .Nm
 will not exit until the service has been started or restarted and has
 notified readiness.
+.El
+.Bl -tag -width x
+.It Fl P
+Send a
+.Dv SIGSTOP
+to the
+.Em process group
+of the supervised process.
+.It Fl C
+Send a
+.Dv SIGCONT
+to the
+.Em process group
+of the supervised process.
+.It Fl K
+Send a
+.Dv SIGKILL
+to the
+.Em process group
+of the supervised process.
 .El
 .Sh IMPLEMENTATION NOTES
 .Nm

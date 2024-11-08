@@ -1,4 +1,4 @@
-.Dd January 15, 2023
+.Dd April 16, 2024
 .Dt S6-SOCKET-ACTIVATION 7
 .Os
 .Sh NAME
@@ -24,10 +24,8 @@ help you set up super-servers.
 The
 .Xr s6-ipcserver 8
 program, for Unix domain sockets, as well as the
-.Xr s6-tcpserver4 8
-and
-.Xr s6-tcpserver6 8
-programs, for TCP INET domain sockets
+.Xr s6-tcpserver 8
+program, for TCP INET domain sockets
 .Po
 available in the s6-networking package[3]
 .Pc
@@ -62,9 +60,7 @@ and
 ways to open your sockets and bind them as early as you want in your
 boot process, and make them accept client connections later:
 .Xr s6-ipcserver-socketbinder 8 ,
-.Xr s6-tcpserver4-socketbinder 8
-and
-.Xr s6-tcpserver6-socketbinder 8 .
+.Xr s6-tcpserver-socketbinder 8 .
 .It
 a supervision infrastructure that can start as many services in
 parallel as you want:

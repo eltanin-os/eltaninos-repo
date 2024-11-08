@@ -1,4 +1,4 @@
-.Dd September 29, 2021
+.Dd April 16, 2024
 .Dt S6-NOTIFYWHENUP 7
 .Os
 .Sh NAME
@@ -85,7 +85,7 @@ events provided by
 Unfortunately, a lot of long-running programs do not offer that
 functionality; instead, they provide a way to poll them, an external
 program that runs and checks whether the service is ready.
-This is a bad mechanism, for several reasons.
+This is a bad mechanism, for several reasons[1].
 Nevertheless, until all daemons are patched to notify their own
 readiness, s6 provides a way to run such a check program to poll for
 readiness, and route its result into the s6 notification system:
@@ -168,7 +168,7 @@ You can hardcode 3 (or 4); or you can make it configurable via a
 command line option.
 See for instance the
 .Fl D Ar notif
-option to the mdevd[1] program.
+option to the mdevd[2] program.
 It really doesn't matter what this
 number is; the important thing is that your daemon knows that this fd
 is already open, and is not using it for another purpose.
@@ -241,7 +241,7 @@ it - for instance the
 program.
 This can be used to make sure that other programs only start when the
 daemon is ready.
-For instance, the s6-rc[2] service manager uses that mechanism to
+For instance, the s6-rc[3] service manager uses that mechanism to
 bring sets of services up or down: a service starts as soon as all its
 dependencies are ready, but never earlier.
 .Sh SEE ALSO
@@ -260,9 +260,12 @@ dependencies are ready, but never earlier.
 .Xr s6-svwait 8
 .Pp
 [1]
-.Lk https://skarnet.org/software/mdevd/mdevd.html
+.Lk https://skarnet.org/lists/supervision/1606.html
 .Pp
 [2]
+.Lk https://skarnet.org/software/mdevd/mdevd.html
+.Pp
+[3]
 .Lk https://skarnet.org/software/s6-rc/
 .Pp
 This man page is ported from the authoritative documentation at:
