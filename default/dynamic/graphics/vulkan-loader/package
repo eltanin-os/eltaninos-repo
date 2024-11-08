@@ -1,8 +1,8 @@
 name:vulkan-loader
-version:1.3.279
+version:1.3.299
 license:apache-2
 description:Vulkan Installable Client Driver (ICD) Loader.
-cksum:42b76199e076c533b708938a818bfb33b283453680b52dcca5d69a288cc52a916eb5056f5ed0afb7fe6a36bd1b0c948e1cc5f1356a2ce8197f245cef27cdee11
+cksum:ed910f211029604de721c7627182a98578a26dcc22149bc606aa207f3324219a6f7711f35763a2d4f7302fc0732349e290d5494097307fbaea062f9cd9e5aff3
 src:Vulkan-Loader-$version
 urls{
 https://github.com/KhronosGroup/Vulkan-Loader/archive/refs/tags/v$version/Vulkan-Loader-$version.tar.gz
