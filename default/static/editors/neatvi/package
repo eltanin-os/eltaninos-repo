@@ -1,10 +1,10 @@
 name:neatvi
-version:10
+version:16
 license:isc
 description:vi/ex editor with small footprint.
-cksum:445e7d6806ea4008b89b45960021206be58cad7a9599a94511354644e13dc2efb55b5e18577d6acbffd237a453e1bf1daa0baf0a9e8d84b43f3b4a6225414978
+cksum:be153241c35f1766b18de01651cf0ab10973e51e29ba49381b1b64d3bf8d9cc6c1c5a66fe3200d893e43a959039e53d928df21301c98d9fa71dfefc29a46df7f
 urls{
-https://downloads.eltaninos.org/mirrors/neatvi-$version.tar.lz
+https://github.com/aligrudi/neatvi/archive/refs/tags/$version.tar.gz
 }
 hostdeps{
 stdenv
