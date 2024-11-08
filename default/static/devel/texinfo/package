@@ -1,8 +1,8 @@
 name:texinfo
-version:7.1
+version:7.1.1
 license:gpl-3+
 description:Utilities to work with and produce manuals, ASCII text, and on-line documentation from a single source file.
-cksum:ae5f9e42218605cf7d8d1bafda461d4af7156efc41cfa3623efe80fd4f39a357a42fa2f0f77dac623ce5190d9462c87cc9afdf0ce42d11b26c564b041849dc05
+cksum:a399789b78c059e29f001e7b27f1c6efe33385f761cc8fdd0dea911683f3810451ff900bc5944b4b74cdf2466e01034f09ddcf51020f5e47a654b2b12e51349d
 urls{
 https://ftp.gnu.org/gnu/texinfo/texinfo-$version.tar.xz
 }
