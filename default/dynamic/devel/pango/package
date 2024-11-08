@@ -1,10 +1,10 @@
 name:pango
-version:1.51.0
+version:1.54.0
 license:lgpl-2.1+
 description:Library for layout and rendering of text.
-cksum:2a341a4843dbbcad69b4f967f5559ad5b71d567099c7ff050c754cd9ff8056137381ada529fe38681b5bdf70861d280ef0fc8ef280a0fe06bfc6ec365ee1635e
+cksum:37b8e3721509a17fbc1b5d85a6e30840e0b11d66ef2471a24a4017158ec48890d0ac75a48c8558ae71641ef40a16ce2c5495415563acb34ac6429a1f65b6ddc7
 urls{
-https://download.gnome.org/sources/pango/1.51/pango-$version.tar.xz
+https://download.gnome.org/sources/pango/1.54/pango-$version.tar.xz
 }
 hostdeps{
 meson
