@@ -1,10 +1,10 @@
 name:cat9
-version:20231231065912
+version:66e556d6b8
 license:unlicense
 description:A User shell for LASH.
-cksum:9553f03df82425fecb72a9b3171526d22b873271d742bf16ba8644ff676a12ffd5615dabf9fe49ddf557159486ccc21366b29bea04718dea1333be589f2030bb
+cksum:f8553b5dec2893bc09206ee970f9958891a4b6284ce4f46263b52161c95d8cb3be5029bc8f4c60f3b10dffb6340835e1c532be2b3ac4936147dd1fa98e677029
 urls{
-https://downloads.eltaninos.org/mirrors/cat9-$version.tar.lz
+https://chiselapp.com/user/letoram/repository/cat9/tarball/$version/cat9-$version.tar.gz
 }
 hostdeps{
 stdenv
