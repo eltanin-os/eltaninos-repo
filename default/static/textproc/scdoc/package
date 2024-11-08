@@ -1,0 +1,14 @@
+name:scdoc
+version:1.11.3
+license:mit
+description:Simple man page generator written for POSIX systems written in C99.
+cksum:4df970c367ea3506376f2563b1d3069943f5e8327f34c35fe52815210f6bf3d2980224afbd55eb89f611bf43de9639792433e0a5710a28eb1d7a1439c4ba4004
+urls{
+https://git.sr.ht/~sircmpwn/scdoc/archive/$version.tar.gz
+}
+hostdeps{
+stdenv
+}
+makedeps{
+libc
+}
