@@ -1,8 +1,8 @@
 name:e2fsprogs
-version:1.47.0
+version:1.47.1
 license:gpl-2,lgpl-2,bsd,mit
 description:Standard Ext2/3/4 filesystem utilities.
-cksum:7bbc4f3e6c0299fcbea029e4629ee9bf0dc95cbb42bfbdbac067c68d899653ac941c0a219325d95970a9423e21aa9a5f9c7f2b67db38264395a0b2f20230a43a
+cksum:387c16ca0b8a8695eac090d50f704c6e404099a5fd24756e13aa5ac1e144441fb1736d5e40334c19db024dc1b772f835fbb8b3212d36b809300fc8545eaeabed
 platforms{
 linux
 }
