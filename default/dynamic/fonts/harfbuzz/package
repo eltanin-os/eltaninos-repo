@@ -1,8 +1,8 @@
 name:harfbuzz
-version:8.3.0
+version:10.0.1
 license:mit
 description:OpenType text shaping engine.
-cksum:d974f06185993c4770ec674535a259b1ca5f3d294f14714ad44e9b8f6cd71bb4a9832a4fd55b298e552bbdca4925463d9a1387080631c5e834cde6e7f44168ea
+cksum:117f9297d0439aa9d4aa8033ddb7bd946b0cf85e85e8693b2c290ce85867d25141da32390efa5faa4ae506bc8c2b2ab63c7d0db041782c0139f1d93e090a141c
 urls{
 https://github.com/harfbuzz/harfbuzz/releases/download/$version/harfbuzz-$version.tar.xz
 }
