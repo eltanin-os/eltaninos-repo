@@ -1,0 +1,20 @@
+name:leptonica
+version:1.85.0
+license:custom
+description:Software for image processing and image analysis applications.
+cksum:f29eca20d2911406a87fb8acfdc937ac835feeaaf6e95fd3886bdf560b19b99f72cec556382e18b53883a73a591933b78dbc5078c18d2e04ace79c9d53ca2fe8
+urls{
+https://github.com/DanBloomberg/leptonica/releases/download/$version/leptonica-$version.tar.gz
+}
+hostdeps{
+stdenv
+}
+makedeps{
+giflib
+libc
+libpng
+libtiff
+libwebp
+openjpeg
+zlib
+}
