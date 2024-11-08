@@ -1,8 +1,8 @@
 name:linux
-version:6.6.15
+version:6.6.58
 license:gpl-2
 description:The Linux kernel image.
-cksum:d2736ca74c8db9fbd01d025545b1412ad6705d69efd41037e374e9322d747954c35d6dd36f139550b47356d031378552f3df592bc86fd73a2b2011b05fa2069e
+cksum:54398e8477c18195ad95381284a583f8b129939aa02bf60a5132c0198681fc19950905290a8240171d04b59f89b1f8f7e5d1bb89eb2cf101209cff7f0847c187
 src:linux-image-$version
 arch{
 x86_64
@@ -11,7 +11,7 @@ platforms{
 linux
 }
 urls{
-https://downloads.eltaninos.org/repo/binaries/$HOSTARCH-linux-$version.tar.lz
+https://downloads.eltaninos.org/repo/binaries/$HOSTARCH-linux-image-$version.tar.lz
 }
 hostdeps{
 stdenv
