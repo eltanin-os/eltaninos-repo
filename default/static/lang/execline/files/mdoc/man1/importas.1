@@ -1,4 +1,4 @@
-.Dd February 14, 2021
+.Dd June 8, 2024
 .Dt IMPORTAS 1
 .Os
 .Sh NAME
@@ -13,6 +13,16 @@
 .Op Fl N | Fl n
 .Op Fl d Ar delim
 .Ar variable
+.Ar envvar
+.Ar prog...
+.Nm
+.Fl S
+.Op Fl i | Fl D Ar default
+.Op Fl u
+.Op Fl s
+.Op Fl C | Fl c
+.Op Fl N | Fl n
+.Op Fl d Ar delim
 .Ar envvar
 .Ar prog...
 .Sh DESCRIPTION
@@ -95,6 +105,16 @@ will be removed from the environment after the substitution.
 .Ql importas -u Ar variable Ar envvar
 is equivalent to
 .Ql importas Ar variable Ar envvar No unexport Ar envvar .
+.It Fl S
+Import with same name.
+This option allows
+.Ar variable
+to be omitted; it will be the same as
+.Ar envvar .
+In other words,
+.Ql importas -S Ar var
+is the same as
+.Ql importas Ar var Ar var .
 .El
 .Pp
 Other options are used to control

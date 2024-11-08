@@ -1,4 +1,4 @@
-.Dd February 14, 2021
+.Dd June 8, 2024
 .Dt ELGLOB 1
 .Os
 .Sh NAME
@@ -12,6 +12,8 @@
 .Op Fl m
 .Op Fl e
 .Op Fl 0
+.Op Fl n
+.Op Fl d Ar delim
 .Ar variable
 .Ar pattern
 .Ar prog...
@@ -65,7 +67,7 @@ via backslashes.
 .Sy Warning :
 the
 .Xr execlineb 1
-launcher uses the backslash as their own escape character - if you
+launcher uses the backslash as their own escape character \(em if you
 want a backslash to be passed to
 .Nm ,
 do not forget to
@@ -75,11 +77,39 @@ it.
 Null globbing.
 By default, if
 .Ar pattern
-matches nothing, it will be substituted as is (verbatim in one
-word).
+matches nothing, it will be substituted as is
+.Po
+verbatim in one word
+.Pc .
 With this option, if
 .Ar pattern
 matches nothing, it will be properly substituted as zero word.
+.It Fl n
+Chomp.
+Don't add an ending delimiter at the end of the word.
+Only valid with the
+.Fl d
+option, see below.
+.It Fl d Ar delim
+Do not split the value.
+Instead, make it one word, where the result of the globbing are
+separated by the first character of
+.Ar delim .
+If the
+.Fl n
+option is not given, the first character of
+.Ar delim
+also appears after the last result.
+If
+.Ar delim
+is the empty string, the values are encoded as a sequence of
+netstrings into a single word
+.Po
+and you can later separate the words with e.g.\&
+.Ql define -s
+\(em cf.\&
+.Xr define 1
+.Pc .
 .El
 .Sh SEE ALSO
 .Xr define 1 ,

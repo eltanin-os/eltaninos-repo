@@ -1,4 +1,4 @@
-.Dd February 16, 2021
+.Dd April 16, 2024
 .Dt BACKTICK 1
 .Os
 .Sh NAME
@@ -55,27 +55,32 @@ No autoimport.
 This is the default.
 .It Fl E
 Autoimport.
-Instead of
-.Xr exec 3 Ns
+Before
+.Xr exec 3 Ap
 ing into
 .Ar prog2... ,
-.Xr exec 3
-into
-.Ql importas -ui Ar variable Ar variable Ar prog2... .
-This substitutes
-.Ar variable
-into the command line instead of putting it into the environment.
-.El
-.Pp
-The other options tell
-.Nm
-what to do if
+perform a substitution
+.Po
+cf.\&
+.Xr execline-substitute 7
+.Pc
+so that
+.Ql $?
+is replaced with
 .Ar prog1... Ap
-s output is not suitable as the contents of an environment variable
-(i.e. it contains a null character) or if
-.Ar prog1...
-crashes or exits nonzero:
-.Bl -tag -width x
+s exitcode
+.Po
+if applicable, see below
+.Pc ,
+and
+.Ql ${ Ar variable No }
+is replaced with
+.Ar prog1... Ap
+s output, instead of keeping the results in the environment.
+The variables will not appear in the environment; if they preexisted
+in
+.Nm Ap
+s environment, they will be removed.
 .It Fl i
 .Nm
 exits with an approximation
