@@ -1,8 +1,8 @@
 name:py-setuptools
-version:69.0.3
+version:70.3.0
 license:mit
 description:Easily download, build, install, upgrade, and uninstall Python packages.
-cksum:39bc61fcff93d7983c997c817de687fc1a59d60f27a728a817d6cc76e95d4358d98d6d012d828261b36b39deefb18a17f0235b64d0454c180a867c95da672152
+cksum:1c5419c679e110223a8a653bd2f5e76eb75a381e291b0c83e0f71ddc24918904e68e7333a0329cec8ee5b021e962de0c46b93db16e4dae30d3906420ce3d4f76
 src:setuptools-$version
 urls{
 https://pypi.io/packages/source/s/setuptools/setuptools-$version.tar.gz
