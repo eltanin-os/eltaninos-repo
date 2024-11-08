@@ -1,0 +1,35 @@
+diff -Naur a/tools/all_syscalls b/tools/all_syscalls
+--- a/tools/all_syscalls	2024-05-28 05:12:08.367258700 -0300
++++ b/tools/all_syscalls	2024-10-31 22:07:40.635257090 -0300
+@@ -1,7 +1,6 @@
+-#!/bin/bash
++#!/bin/sh
+ 
+ set -e
+-set -o pipefail
+ 
+ SED="$1"
+ shift
+@@ -10,9 +9,17 @@
+ #include <sys/syscall.h>
+ "
+ 
+-trap 'rm -f $OUTPUT $OUTPUT.deps' ERR
++failed=true
++cleanup() {
++    if $failed; then
++        rm -f "$OUTPUT" "$OUTPUT.deps"
++    fi
++}
++trap cleanup EXIT
+ 
+-"$@" -MD -MF "$OUTPUT.deps" <<< "$SYSCALL_INCLUDES" -dM -E - \
+-	| "$SED" -n -e 's/^#define __NR_\([^ ]*\).*$/UL_SYSCALL("\1", __NR_\1)/p' \
+-	| sort \
+-	> "$OUTPUT"
++printf "%s" "$SYSCALL_INCLUDES" | "$@" -MD -MF "$OUTPUT.deps" -dM -E - \
++    | "$SED" -n -e 's/^#define __NR_\([^ ]*\).*$/UL_SYSCALL("\1", __NR_\1)/p' \
++    | sort \
++    > "$OUTPUT"
++
++failed=false

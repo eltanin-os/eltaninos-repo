@@ -5,7 +5,7 @@ if {
 	-e "s;${exec_prefix}/bin;${exec_prefix}${BINDIR};g"
 	-e "s;${exec_prefix}/sbin;${exec_prefix}${BINDIR};g"
 }
-export ARBOR_MK_CONFIGURE_ARGS "--disable-eject;--disable-fallocate;--disable-hwclock;--disable-last;--disable-mesg;--disable-mount;--disable-mountpoint;--disable-nologin;--disable-pivot_root;--disable-switch_root;--disable-unshare;--disable-makeinstall-chown;--disable-use-tty-group;--without-systemd;--without-python"
+export ARBOR_MK_CONFIGURE_ARGS "--disable-eject;--disable-fallocate;--disable-hwclock;--disable-last;--disable-mesg;--disable-mount;--disable-mountpoint;--disable-nologin;--disable-pivot_root;--disable-switch_root;--disable-unshare;--disable-makeinstall-chown;--disable-use-tty-group;--disable-liblastlog2;--without-systemd;--without-python"
 if { arbor-mk-gnuconfigure install }
 arbor-utils-install -d bin
 blkdiscard ctrlaltdel dmesg fsfreeze swaplabel swapoff swapon

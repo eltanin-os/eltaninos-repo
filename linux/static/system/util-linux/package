@@ -1,13 +1,13 @@
 name:util-linux
-version:2.39.3
+version:2.40.2
 license:gpl-3+,gpl-2+,gpl-2
 description:Miscellaneous linux utilities.
-cksum:597570ed0fceadaefab8b1e2d0f428931072134d6b5e237dee3c825e1a032300e48941fcd560e760d7878b4cfbe49936660c48822df4889431a43ec865f1cb81
+cksum:9328744e49dc4125ee52882f99ac21e415e3b7ea9003780d0ffe6361e3b6ba40ef964fc6b66ae5655593d7907f352c1546f274ddd2ae6d9edaa3c59578013899
 platforms{
 linux
 }
 urls{
-https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-$version.tar.xz
+https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.40/util-linux-$version.tar.xz
 }
 hostdeps{
 stdenv
