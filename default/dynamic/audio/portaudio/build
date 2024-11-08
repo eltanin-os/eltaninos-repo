@@ -1,0 +1,10 @@
+#!/bin/execlineb -P
+if { autoreconf -if }
+if {
+	if { mkdir -p src/hostapi/sndio }
+	importas -Si ARBOR_ROOTDIR
+	mv ${ARBOR_ROOTDIR}/tmp/files/pa_sndio.c src/hostapi/sndio
+}
+export nprocs "1"
+export ARBOR_MK_CONFIGURE_ARGS "--without-alsa;--without-oss"
+arbor-mk-gnuconfigure install

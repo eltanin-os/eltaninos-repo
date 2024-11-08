@@ -1,0 +1,18 @@
+name:portaudio
+version:19.7.0
+license:mit
+description:A cross-platform, open-source C language library for real-time audio input and output.
+cksum:d6b87fd1ed59bc22c1bdc3b7f63a6238fc18f3b0bbe931867737a18992b229d3cfa86f56cb90fb871e7b85ec7da7c10751b71de9bdc106cac22e6e0760e2ded3
+urls{
+https://github.com/PortAudio/portaudio/archive/refs/tags/v$version.tar.gz
+}
+hostdeps{
+autoconf
+automake
+libtool
+stdenv
+}
+makedeps{
+libc
+sndio
+}
