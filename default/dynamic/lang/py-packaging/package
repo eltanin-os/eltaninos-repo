@@ -1,8 +1,8 @@
 name:py-packaging
-version:23.2
+version:24.1
 license:apache-2.0,bsd-2
 description:Core utilities for Python3 packages.
-cksum:c63c56758a714b7e6486d3c805fc124cc7afb58ac6ec723ba160937bf2d3fc23a6c5ffb3dd58b6b1b379614c70522c50737323e687a0f099fd6ccef94feda2f2
+cksum:0c541fceba3ac8fcdb0fb89a0187e19053504b70e493775011d9e205e2d6183911be02d7f7aac0253fe6cc90c4ad90fcf55e69d6e4664c3db998977831456d61
 src:packaging-$version
 urls{
 https://files.pythonhosted.org/packages/source/p/packaging/packaging-$version.tar.gz
