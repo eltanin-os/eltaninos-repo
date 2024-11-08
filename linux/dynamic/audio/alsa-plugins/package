@@ -1,0 +1,15 @@
+name:alsa-plugins
+version:1.2.12
+license:gpl-2+,lgpl-2.1+
+description:Advanced Linux Sound Architecture (ALSA) plugins.
+cksum:982cae9441cca693ace844fe76936f25bdde8493719dd5a92f0a26b28653030e12dff5634321f2850d7fde8e05cf7b65af9231acdff74c6e4fe086bd0499e29f
+urls{
+http://www.alsa-project.org/files/pub/plugins/alsa-plugins-$version.tar.bz2
+}
+hostdeps{
+stdenv
+}
+makedeps{
+alsa-lib
+libc
+}
