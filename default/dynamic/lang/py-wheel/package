@@ -1,8 +1,8 @@
 name:py-wheel
-version:0.42.0
+version:0.44.0
 license:mit
 description:A built-package format for Python.
-cksum:4145d86cf6f20943e751731d900dcb532aac10481f91ed7b726ada0239cf2b026771461e7f6345db910b6e99261d0a6af018e2397c8d5f14c1b7631767fe71a7
+cksum:89a1e0d52e746c7825186253902f19fa44211ced20fa8d09967d00faee8f3fb4b73a5ff97a50569a2d839eec78ea2e9d6b88c0e43d1ec2801adddcd8764a426c
 src:wheel-$version
 urls{
 https://files.pythonhosted.org/packages/source/w/wheel/wheel-$version.tar.gz
