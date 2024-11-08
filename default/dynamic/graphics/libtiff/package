@@ -1,8 +1,8 @@
 name:libtiff
-version:4.6.0
+version:4.7.0
 license:libtiff
 description:Provides support for the Tag Image File Format or TIFF.
-cksum:3620329786e2af3d2bd8e201878f8882dc9cba40300f5307e58bc113c925c8ec8082435e6b0c8dcef61087a912cdcbebc1af92f0a4e7aa740d2885d461e61599
+cksum:db328f43b289083a9546307b4f7b8dda8ec9453df87d6a04efe6ddd991ed3a0392018fa509b802a3207026d5fd72a4f121c10d40bcfc66dfa4d5f7e2308974f9
 src:tiff-$version
 urls{
 https://download.osgeo.org/libtiff/tiff-$version.tar.xz
