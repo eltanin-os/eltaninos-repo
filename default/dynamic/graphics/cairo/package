@@ -1,8 +1,8 @@
 name:cairo
-version:1.18.0
+version:1.18.2
 license:lgpl-2.1+,mpl-1.1
 description:A vector graphics library.
-cksum:2005c2ac8d06912ad1dcef1e2657a9bbcb54b42cb13e25f7227e21a3fc9df25380671723a8c4d46c0e3b6d2a76a4f4ca7f7462e119be5ec4805b91d754d5b496
+cksum:dadba8e1580b13f1b45ce4eeea864e70f5e3d4e77bf171cc7d7926e3c0821d7cc40ee7796dfd2a7351e18ccd2a0a189194697c653d841b58eeca4f6462ba5e14
 urls{
 https://www.cairographics.org/releases/cairo-$version.tar.xz
 }
