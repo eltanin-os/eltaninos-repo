@@ -1,8 +1,8 @@
 name:xorg-proto
-version:2023.2
+version:2024.1
 license:mit
 description:Combined X.Org X11 protocol headers.
-cksum:bbb76e3552b4343fd1e26850e3fcd5f5fa99579864af7b06e20c7431caad399caad2269eed21e50e838fe75466625768da7d4ddb51a861311d4531746e65179f
+cksum:ae64c2852e77da36862822bd384ff704cbda550831325e8a2ddddde44583d0112c9ba5eedde6c12ce52df2d025e9452aa3664b081e11045c2aa78b5644df2ecc
 src:xorgproto-$version
 urls{
 https://www.x.org/releases/individual/proto/xorgproto-$version.tar.xz
