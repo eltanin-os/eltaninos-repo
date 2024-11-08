@@ -1,10 +1,10 @@
 name:gobject-introspection
-version:1.79.1
-license:
+version:1.82.0
+license:lgpl-2+,gpl-2+,mit
 description:GObject Introspection.
-cksum:f2a687f36192ba213cbc83ffaef64dd7153361d50ff0926ced0d3daaaa2012b296f5900d309b1f77aed125e0a37887ae7f5806818ea1a7aa85ce29cf0274cbb8
+cksum:ed30f004d0e42a9444fc83f26690b21384d1df758ed2912425ad29769433af65d6ca1ae457856dabb62e065d374dde2a0b79a2ebaa7aab2f57bc4a10f3aaf302
 urls{
-https://download.gnome.org/sources/gobject-introspection/1.79/gobject-introspection-$version.tar.xz
+https://download.gnome.org/sources/gobject-introspection/1.82/gobject-introspection-$version.tar.xz
 }
 hostdeps{
 bison
