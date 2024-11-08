@@ -1,8 +1,8 @@
 name:libjxl
-version:0.10.1
+version:0.11.0
 license:apache-2
 description:JPEG XL reference encoder/decoder.
-cksum:e7d554ea651fd75ffb8f1967b9e8bd52a67be1537251672902412fe185c98b46cc6057fa05dbe055b5006d8e36f3105afff736f783751bc3d9cf6b06d7bbfefe
+cksum:224ad846e87e022166bd2a9e900a92d096ea74965bb87f52e3656ce5d16b7a3b9e44ecb4d12c8e0b0f34b6a677961a19dd5258980ad7b274a288aff2d569e1e0
 urls{
 https://github.com/libjxl/libjxl/archive/refs/tags/v$version.tar.gz
 }
