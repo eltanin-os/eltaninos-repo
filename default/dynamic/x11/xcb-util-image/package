@@ -1,0 +1,15 @@
+name:xcb-util-image
+version:0.4.1
+license:mit
+description:XCB port of Xlibs XImage and XShmImage.
+cksum:f45ec948407a06e85212c65760b6497ae28d989fc458c32963685cb713df84ffaab87b49c3e813d124e58d43a2144b8a4d70212163b8c3842cd2487767d1d809
+urls{
+https://xcb.freedesktop.org/dist/xcb-util-image-$version.tar.xz
+}
+hostdeps{
+stdenv
+}
+makedeps{
+libc
+xcb-util
+}
