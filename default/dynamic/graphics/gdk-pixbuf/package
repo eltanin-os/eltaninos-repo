@@ -1,8 +1,8 @@
 name:gdk-pixbuf
-version:2.42.10
+version:2.42.12
 license:lgpl-2.1+
 description:Library for image loading and manipulation.
-cksum:7378ae8fcd6e102edf4f5a487b3650cfde8772941d1d0d9a54997c8338dbcbed74c10469341b0870279a9b5281ed3b33317452af15d618e8de17781e076761f8
+cksum:522cde5f2fe677bb00a3d79ce00be28d3d911996e1d8cc5c2846763661a230cfd30a114a095936ebc0685b3eec5a31a8f30107d55b8f0c5b704491f7f3877e1e
 urls{
 https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-$version.tar.xz
 }
