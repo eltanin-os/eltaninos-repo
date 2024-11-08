@@ -1,8 +1,8 @@
 name:pixman
-version:0.42.2
+version:0.43.4
 license:mit
 description:Low-level pixel manipulation library.
-cksum:ef098c833bb4b15490c6e9b7fc37476d5ea533ba44e451c5eb5242463cbd2f33b5583efc0263e7e9d7accf5873ab63f8049872096c76139a0c5f8e7d3a87794a
+cksum:466f37684c185bbffddd2aa50a5be51feed2d6056cdfb317bfd3b0e72e6945e74f2864b1426021449b5c78811a23cabdcb0fa06a1348c6942acfeff3e2302c1c
 urls{
 https://www.cairographics.org/releases/pixman-$version.tar.gz
 }
