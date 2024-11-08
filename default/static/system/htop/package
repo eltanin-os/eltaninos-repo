@@ -1,8 +1,8 @@
 name:htop
-version:3.2.2
+version:3.3.0
 license:gpl-2.0
 description:Enhanced version of top utility.
-cksum:e541b49844ee556daf7e8b5d50a655b7b68801d5cbd6f5c94d4f8d638f2e629752e069fdfbcf83a1f6f4be8ed7ae8540ac17e8ac997368b4fcd9bbeb675c76b7
+cksum:bc80d4bdd57feeee0ee8ecd40ddf719645de1583201510dac010d56cbc13c2fd25262fcf53677a12b7ed809812eb68f44a407f2162454bcc290ec0b65840921a
 urls{
 https://github.com/htop-dev/htop/releases/download/$version/htop-$version.tar.xz
 }
