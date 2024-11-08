@@ -1,8 +1,8 @@
 name:libfontenc
-version:1.1.7
+version:1.1.8
 license:mit
 description:X11 font encoding library.
-cksum:e9999b8c901db03eb795841f71bc57cb59a294b1f0c836bea40a6f3863b49fa9ec2883c87e92d06b17d0f7b8e0effe1ca1e2536576ceed4233163a9c96bcde69
+cksum:8a5792d68f23f0852defcc276346d54f6e2ccad5c526bb748af32cccd2a577e026f01fe49aaf2a0b1ac879780a53a553455d34716c7833f3dcccf2f2ea27aaa8
 urls{
 https://www.x.org/releases/individual/lib/libfontenc-$version.tar.xz
 }
