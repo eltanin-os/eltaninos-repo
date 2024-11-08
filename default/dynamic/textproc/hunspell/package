@@ -1,0 +1,17 @@
+name:hunspell
+version:1.7.2
+license:gpl-2+,lgpl-2.1+,mpl-1.1
+description:Spell checker and morphological analyzer library and program.
+cksum:8c5ba1fe03ef830c6c5bcccee3eca1236775bfc154790212faeaa8e1728fdec0c9c86c39749eec85ef12d9c48ff14c7448ec9cef065e2fde5a9c532cec74844d
+urls{
+https://github.com/hunspell/hunspell/releases/download/v$version/hunspell-$version.tar.gz
+}
+hostdeps{
+gettext
+stdenv
+}
+makedeps{
+libc
+ncurses
+readline
+}
