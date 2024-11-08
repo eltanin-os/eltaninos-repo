@@ -1,8 +1,8 @@
 name:vlc
-version:3.0.20
+version:3.0.21
 license:gpl-2,lgpl-2.1
 description:VideoLAN media player and streaming server.
-cksum:9b0fe3097f3938ddb06bcf9c2a4fc961b5d4483bd65b5d77bb9fe4a4baa144de36960963a4d37ce800f2b5170f0f4d496f723f62c5e4b828923a0f7c662b3a86
+cksum:2774c136640c91dc1b6a7f750e2070b944f60c028a701b3e5107a39328e4bebf62b963c76dba524d43c602cff850e860fc115f2cea985827bdbeb9bddc78acd3
 urls{
 https://download.videolan.org/vlc/$version/vlc-$version.tar.xz
 }
