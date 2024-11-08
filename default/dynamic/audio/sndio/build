@@ -1,5 +1,5 @@
 #!/bin/execlineb -P
-if { arbor-utils-sed configure -e "193d" -e "194d" } # ignore unknown options
+if { arbor-utils-sed configure -e "225d" -e "226d" } # ignore unknown options
 if {
 	multisubstitute {
 		importas -iu CC CC
