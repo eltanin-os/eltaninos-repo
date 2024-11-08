@@ -1,8 +1,8 @@
 name:libarchive
-version:3.7.2
+version:3.7.7
 license:bsd-2,bsd-3,public-domain
 description:Library that can create and read several streaming archive formats.
-cksum:83bb762cdbdc76ecc4fc6e8866d318420e94c6fc561d1621f4d956ab8a3a5f2607f796f57658fd308892f7808db52beb66bc87c61b78d240c984a204b6725935
+cksum:b668dadad797989ac32fd65452c92dcc15cb28da41b4fc1773af6eb5d59beeee31272c70ef6b4a4b32aadc24c814b84353ec240e326f9529fb48894b2d55f55b
 urls{
 https://github.com/libarchive/libarchive/releases/download/v$version/libarchive-$version.tar.xz
 }
