@@ -1,5 +1,5 @@
 #!/bin/execlineb -P
-export ARBOR_MK_CONFIGURE_ARGS "--with-system-expat;--with-system-ffi;--without-ensurepip"
+export ARBOR_MK_CONFIGURE_ARGS "--enable-optimizations;--with-readline=editline;--with-system-expat;--with-system-ffi;--without-ensurepip"
 export PYTHONHASHSEED "0"
 if { arbor-mk-gnuconfigure install }
 if { arbor-utils-install -l bin idle3 idle }
