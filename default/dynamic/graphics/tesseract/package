@@ -1,0 +1,21 @@
+name:tesseract
+version:5.4.1
+license:apache-2.0
+description:Open Source OCR Engine.
+cksum:6cc7fea806c04a02c0977aa4e7c9883232b6aef817b958671ef5374c0edca3be340041a0b4c0a38078b7ffd887274afb0540ff7e9f75875e52104f7b7048f237
+urls{
+https://github.com/tesseract-ocr/tesseract/archive/refs/tags/$version.tar.gz
+}
+hostdeps{
+autoconf
+automake
+libtool
+stdenv
+}
+makedeps{
+cairo
+icu
+leptonica
+libc
+pango
+}

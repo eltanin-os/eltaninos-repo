@@ -1,0 +1,4 @@
+#!/bin/execlineb -P
+if { ./autogen.sh }
+if { arbor-mk-gnuconfigure install }
+arbor-mk-gmake training-install
