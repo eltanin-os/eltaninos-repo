@@ -1,10 +1,11 @@
 name:ca-certificates
-version:20230311
+version:20240203
 license:gpl-2,mpl-2
 description:Common CA certificates for SSL/TLS.
-cksum:9ca150f5bb3a228e2990a1599b559bcf22a95d45a65e5607405b7a7fc28c330fcf5e346ed4c9baac5875da84c4a5bfae5c69c5baa84713a7e0c0107c4740120a
+cksum:afb61c177231e70bf866dc47c652611d993be2393b07fa07fb36c561e130c4991715c11b9eff34b9931176c9e353b1a69937975a42450e4ace30218d271a36e8
+src:$name
 urls{
-http://downloads.eltaninos.org/mirrors/ca-certificates-$version.tar.lz
+https://deb.debian.org/debian/pool/main/c/ca-certificates/ca-certificates_$version.tar.xz
 }
 hostdeps{
 stdenv
