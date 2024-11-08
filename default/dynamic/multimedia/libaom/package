@@ -1,8 +1,8 @@
 name:libaom
-version:3.8.1
+version:3.9.1
 license:bsd-2,custom
 description:Alliance for Open Media (AOM) AV1 codec SDK.
-cksum:b956126ee7b41354204e7b926b71c76733b63b51a2aa4498b38052ec2d708bd88b49030f580bcbe1ea8c4b8900d72aa1f7e29ef2f79decb94e3fd708d83e5309
+cksum:2ac5a264b36968726ab2ed9862003faf864a11be8b8cf244500c2d952a9195f09518093a230eb848b3ad283f4adf519ae2f2bfc4781aa16f463008c02777c951
 urls{
 https://storage.googleapis.com/aom-releases/libaom-$version.tar.gz
 }
