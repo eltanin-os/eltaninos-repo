@@ -1,8 +1,8 @@
 name:libdeflate
-version:1.19
+version:1.22
 license:mit
 description:Optimized deflate/zlib/gzip library.
-cksum:1f72e61c5c8145a9cda90b36555ab5a30514b9c0cdcfeb5e6d59c983716a5fba5822ae0b1221f5ee9ca9503997540ac927c2f4f5de39f6d1a966e89e3e1fbea0
+cksum:37d9f527106f702160ae943e237f2c9b144cfb6e5bc9f6601e1d4ef0a9dded7fe8f3c1deb48b97c87e2c2758416db146982bac9e727dda4643c4c1980bef9373
 urls{
 https://github.com/ebiggers/libdeflate/releases/download/v$version/libdeflate-$version.tar.gz
 }
