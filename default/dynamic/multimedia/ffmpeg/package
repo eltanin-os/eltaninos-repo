@@ -1,8 +1,8 @@
 name:ffmpeg
-version:6.1.1
+version:7.1
 license:gpl-2+,lgpl-2.1+
 description:Decoding, encoding and streaming software.
-cksum:3bdd18ab692a0307634ae05a640e69fdbab419bc53bfd48f729e4837e4cb9510f6119a8eeb26664fac46057bc2ee5b85318ab2822525dacdfa04d22621e1e24d
+cksum:f56ce0786bdf38c4d354fabbdc1fa0699777018ca8d36b5be12ab181b78f1e144e4eb3ea4f98484aa28291babcbc11adf9d507ff5eb7878504b182b3b141cb7e
 urls{
 http://ffmpeg.org/releases/ffmpeg-$version.tar.xz
 }
