@@ -1,14 +1,13 @@
 name:ccore
-version:20230818045448
+version:a0b4d2c63b306c0b4df3f1f8a67bc8b00c941fbc
 license:unlicense
 description:Eltanin complementary core.
-cksum:f09430a6c900809bbe53ffa700d1cabce7ce253f79209cbb9495b9041d233c071fc726deda5befae30be34b4de47c81f3c4b0ebe81c9bf2135ffe689066720cc
+cksum:591e66d178a056f75b3eea85454ec6b9c057b48a3eb61ae3656b7c815f8a37f9511bd45f68b330a8ddf9050d38fa85b464a82a82d5dd5d7d0f82aedcee5cd1ea
 urls{
-http://downloads.eltaninos.org/sources/ccore/ccore-$version.tar.lz
+https://git.eltaninos.org/ccore/snapshot/ccore-$version.tar.gz
 }
 hostdeps{
 stdenv
-yacc
 }
 makedeps{
 ncurses
