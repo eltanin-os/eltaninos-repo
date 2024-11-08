@@ -1,6 +1,6 @@
 diff -Naur a/palemoon/app/Makefile.in b/palemoon/app/Makefile.in
---- a/palemoon/app/Makefile.in	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/app/Makefile.in	2023-12-04 10:47:33.118191258 -0300
+--- a/palemoon/app/Makefile.in	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/app/Makefile.in	2024-10-24 09:02:07.289739918 -0300
 @@ -54,11 +54,11 @@
  ifneq (,$(filter-out WINNT,$(OS_ARCH)))
  
@@ -16,8 +16,8 @@ diff -Naur a/palemoon/app/Makefile.in b/palemoon/app/Makefile.in
  endif
  
 diff -Naur a/palemoon/app/application.ini b/palemoon/app/application.ini
---- a/palemoon/app/application.ini	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/app/application.ini	2023-11-29 10:28:46.506460075 -0300
+--- a/palemoon/app/application.ini	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/app/application.ini	2024-10-24 09:02:07.289739918 -0300
 @@ -20,9 +20,9 @@
  
  [App]
@@ -38,8 +38,8 @@ diff -Naur a/palemoon/app/application.ini b/palemoon/app/application.ini
 \ No newline at end of file
 +#endif
 diff -Naur a/palemoon/app/moz.build b/palemoon/app/moz.build
---- a/palemoon/app/moz.build	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/app/moz.build	2023-12-04 10:46:56.654191262 -0300
+--- a/palemoon/app/moz.build	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/app/moz.build	2024-10-24 09:02:07.290739918 -0300
 @@ -9,6 +9,7 @@
  
  JS_PREFERENCE_PP_FILES += [
@@ -49,8 +49,8 @@ diff -Naur a/palemoon/app/moz.build b/palemoon/app/moz.build
  
  if CONFIG['LIBXUL_SDK']:
 diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
---- a/palemoon/app/profile/palemoon.js	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/app/profile/palemoon.js	2023-12-03 17:08:37.220198817 -0300
+--- a/palemoon/app/profile/palemoon.js	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/app/profile/palemoon.js	2024-10-24 09:04:21.096735872 -0300
 @@ -40,6 +40,7 @@
  pref("extensions.guid.appCompatVersion", "56.9");
  pref("extensions.guid.appCompatId", "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}");
@@ -104,8 +104,8 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  pref("app.update.staging.enabled", true);
  
  // Update service URL:
--pref("app.update.url", "https://aus.palemoon.org/?application=%PRODUCT%&version=%VERSION%&arch=%BUILD_TARGET%&flavor=%BUILD_SPECIAL%&toolkit=%WIDGET_TOOLKIT%&buildid=%BUILD_ID%&channel=%CHANNEL%");
-+//pref("app.update.url", "https://aus.palemoon.org/?application=%PRODUCT%&version=%VERSION%&arch=%BUILD_TARGET%&flavor=%BUILD_SPECIAL%&toolkit=%WIDGET_TOOLKIT%&buildid=%BUILD_ID%&channel=%CHANNEL%");
+-pref("app.update.url", "https://aus.palemoon.org/?application=%PRODUCT%&version=%VERSION%&arch=%BUILD_TARGET%&SSE2=%CPU_SSE2%&AVX=%CPU_AVX%&AVX2=%CPU_AVX2%&flavor=%BUILD_SPECIAL%&toolkit=%WIDGET_TOOLKIT%&buildid=%BUILD_ID%&channel=%CHANNEL%");
++//pref("app.update.url", "https://aus.palemoon.org/?application=%PRODUCT%&version=%VERSION%&arch=%BUILD_TARGET%&SSE2=%CPU_SSE2%&AVX=%CPU_AVX%&AVX2=%CPU_AVX2%&flavor=%BUILD_SPECIAL%&toolkit=%WIDGET_TOOLKIT%&buildid=%BUILD_ID%&channel=%CHANNEL%");
  // app.update.url.manual is in branding section
  // app.update.url.details is in branding section
  
@@ -178,16 +178,16 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  // keep in {PROFILEDIR}/bookmarkbackups. Special values:
  // -1: unlimited
  //  0: no backups created (and deletes all existing backups)
-@@ -511,7 +513,7 @@
- pref("general.warnOnAboutConfig",                 false);
- #endif
+@@ -522,7 +524,7 @@
+ // misbehave. Should also avoid spurious GCs during ghostbusting.
+ pref("javascript.options.gc_on_memory_pressure",  false);
  
 -// This is the pref to control the location bar, change this to true to 
 +// This is the pref to control the location bar, change this to true to
  // force this - this makes the origin of popup windows more obvious to avoid
  // spoofing. We would rather not do it by default because it affects UE for web
  // applications, but without it there isn't a really good way to prevent chrome
-@@ -778,7 +780,7 @@
+@@ -794,7 +796,7 @@
  // At startup, if the handler service notices that the version number in the
  // region.properties file is newer than the version number in the handler
  // service datastore, it will add any new handlers it finds in the prefs (as
@@ -196,7 +196,7 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  pref("gecko.handlerService.defaultHandlersVersion", "chrome://browser-region/locale/region.properties");
  
  // The default set of web-based protocol handlers shown in the application
-@@ -829,9 +831,9 @@
+@@ -845,9 +847,9 @@
  // By default, we don't want protocol/content handlers to be registered from a different host, see bug 402287
  pref("gecko.handlerService.allowRegisterFromDifferentHost", false);
  
@@ -209,7 +209,7 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  
  pref("browser.EULA.version", 3);
  pref("browser.rights.version", 3);
-@@ -870,7 +872,7 @@
+@@ -886,7 +888,7 @@
  // restore_on_demand overrides browser.sessionstore.max_concurrent_tabs
  // and restore_hidden_tabs. When true, tabs will not be restored until they are
  // focused (also applies to tabs that aren't visible). When false, the values
@@ -218,7 +218,7 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  // respected. Selected tabs are always restored regardless of this pref.
  pref("browser.sessionstore.restore_on_demand", true);
  // The number of tabs that can restore concurrently.
-@@ -957,7 +959,7 @@
+@@ -973,7 +975,7 @@
  pref("browser.zoom.updateBackgroundTabs", true);
  
  // base URL for web-based support pages
@@ -227,7 +227,7 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  
  // Name of alternate about: page for certificate errors (when undefined, defaults to about:neterror)
  pref("security.alternate_certificate_error_page", "certerror");
-@@ -1015,7 +1017,7 @@
+@@ -1031,7 +1033,7 @@
  
  #ifdef MOZ_SERVICES_SYNC
  // Info when outdated sync detected
@@ -236,7 +236,7 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  // The sync engines to use.
  pref("services.sync.registerEngines", "Bookmarks,Form,History,Password,Prefs,Tab,Addons");
  // Preferences to be synced by default
-@@ -1176,7 +1178,7 @@
+@@ -1192,7 +1194,7 @@
     2 = inside identity button, left side
     3 = urlbar, right side (next to bookmark star)
     4 = statusbar
@@ -247,7 +247,7 @@ diff -Naur a/palemoon/app/profile/palemoon.js b/palemoon/app/profile/palemoon.js
  // address bar border, 0 = no border, 1 = border, 2 = border only on secure sites
 diff -Naur a/palemoon/app/profile/vendor.js b/palemoon/app/profile/vendor.js
 --- a/palemoon/app/profile/vendor.js	1969-12-31 21:00:00.000000000 -0300
-+++ b/palemoon/app/profile/vendor.js	2023-12-04 10:46:29.198191266 -0300
++++ b/palemoon/app/profile/vendor.js	2024-10-24 09:02:07.295739918 -0300
 @@ -0,0 +1,270 @@
 +/* ICEWEASEL-UXP VENDOR.JS */
 +// Use LANG environment variable to choose locale
@@ -520,8 +520,8 @@ diff -Naur a/palemoon/app/profile/vendor.js b/palemoon/app/profile/vendor.js
 +// Enable sndio audio backend
 +pref("media.cubeb.backend", "sndio");
 diff -Naur a/palemoon/base/content/aboutDialog.xul b/palemoon/base/content/aboutDialog.xul
---- a/palemoon/base/content/aboutDialog.xul	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/base/content/aboutDialog.xul	2023-11-30 05:17:52.552917244 -0300
+--- a/palemoon/base/content/aboutDialog.xul	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/base/content/aboutDialog.xul	2024-10-24 09:02:07.296739918 -0300
 @@ -1,4 +1,4 @@
 -<?xml version="1.0"?> <!-- -*- Mode: HTML -*- --> 
 +<?xml version="1.0"?> <!-- -*- Mode: HTML -*- -->
@@ -568,16 +568,16 @@ diff -Naur a/palemoon/base/content/aboutDialog.xul b/palemoon/base/content/about
      <key keycode="VK_ESCAPE" oncommand="window.close();"/>
    </keyset>
 diff -Naur a/palemoon/branding/shared/pref/preferences.inc b/palemoon/branding/shared/pref/preferences.inc
---- a/palemoon/branding/shared/pref/preferences.inc	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/branding/shared/pref/preferences.inc	2023-12-03 03:46:11.846204545 -0300
+--- a/palemoon/branding/shared/pref/preferences.inc	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/branding/shared/pref/preferences.inc	2024-10-24 09:18:33.016471036 -0300
 @@ -1,8 +1,8 @@
  // ===| General |==============================================================
  
 -pref("startup.homepage_welcome_url","https://www.palemoon.org/firstrun.shtml");
-+//pref("startup.homepage_welcome_url","https://www.palemoon.org/firstrun.shtml");
++pref("startup.homepage_welcome_url","https://selene.eltaninos.org/firstrun.html");
  
 -pref("app.vendorURL", "https://www.palemoon.org/");
-+//pref("app.vendorURL", "https://www.palemoon.org/");
++pref("app.vendorURL", "https://selene.eltaninos.org");
  
  
  // User Interface
@@ -590,7 +590,7 @@ diff -Naur a/palemoon/branding/shared/pref/preferences.inc b/palemoon/branding/s
  
  pref("extensions.update.autoUpdateDefault", true); // Automatically update extensions by default
  pref("extensions.getAddons.maxResults", 10);
-@@ -63,7 +63,7 @@
+@@ -59,7 +59,7 @@
  
  // ===| Sync |=================================================================
  
@@ -599,7 +599,7 @@ diff -Naur a/palemoon/branding/shared/pref/preferences.inc b/palemoon/branding/s
  pref("services.sync.serverURL","https://pmsync.palemoon.org/sync/index.php/");
  pref("services.sync.jpake.serverURL","https://keyserver.palemoon.org/");
  pref("services.sync.termsURL", "https://www.palemoon.org/sync/terms.shtml");
-@@ -72,6 +72,7 @@
+@@ -68,6 +68,7 @@
  pref("services.sync.syncKeyHelpURL", "https://www.palemoon.org/sync/help/recoverykey.shtml");
  
  pref("services.sync.APILevel", 1); // FSyncMS doesn't support 'info/configuration' requests
@@ -608,8 +608,8 @@ diff -Naur a/palemoon/branding/shared/pref/preferences.inc b/palemoon/branding/s
  // ============================================================================
  
 diff -Naur a/palemoon/confvars.sh b/palemoon/confvars.sh
---- a/palemoon/confvars.sh	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/confvars.sh	2023-11-29 10:28:51.594459959 -0300
+--- a/palemoon/confvars.sh	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/confvars.sh	2024-10-24 09:02:07.297739918 -0300
 @@ -8,8 +8,8 @@
  # These values where appropriate are hardcoded in application.ini
  # to "Pale Moon" and "Moonchild Productions" respectively for
@@ -621,7 +621,7 @@ diff -Naur a/palemoon/confvars.sh b/palemoon/confvars.sh
  
  # Application Version
  # MOZ_APP_VERSION is read from ./config/version.txt
-@@ -93,7 +93,7 @@
+@@ -88,7 +88,7 @@
  # Currently, only omni and flat are supported
  MOZ_CHROME_FILE_FORMAT=omni
  JAR_COMPRESSION=brotli
@@ -631,9 +631,9 @@ diff -Naur a/palemoon/confvars.sh b/palemoon/confvars.sh
  # Set the default top-level extensions
  MOZ_EXTENSIONS_DEFAULT=" gio"
 diff -Naur a/palemoon/installer/package-manifest.in b/palemoon/installer/package-manifest.in
---- a/palemoon/installer/package-manifest.in	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/installer/package-manifest.in	2023-12-04 10:57:53.119191184 -0300
-@@ -238,6 +238,7 @@
+--- a/palemoon/installer/package-manifest.in	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/installer/package-manifest.in	2024-10-24 09:02:07.298739918 -0300
+@@ -246,6 +246,7 @@
  @RESPATH@/browser/defaults/permissions
  @RESPATH@/browser/@PREF_DIR@/palemoon.js
  @RESPATH@/browser/@PREF_DIR@/palemoon-branding.js
@@ -642,8 +642,8 @@ diff -Naur a/palemoon/installer/package-manifest.in b/palemoon/installer/package
  @RESPATH@/defaults/autoconfig/prefcalls.js
  
 diff -Naur a/palemoon/locales/en-US/chrome/browser/syncBrand.dtd b/palemoon/locales/en-US/chrome/browser/syncBrand.dtd
---- a/palemoon/locales/en-US/chrome/browser/syncBrand.dtd	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/locales/en-US/chrome/browser/syncBrand.dtd	2023-12-03 03:45:05.934204553 -0300
+--- a/palemoon/locales/en-US/chrome/browser/syncBrand.dtd	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/locales/en-US/chrome/browser/syncBrand.dtd	2024-10-24 09:02:07.298739918 -0300
 @@ -3,4 +3,4 @@
     - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
  
@@ -651,7 +651,7 @@ diff -Naur a/palemoon/locales/en-US/chrome/browser/syncBrand.dtd b/palemoon/loca
 -<!ENTITY syncBrand.fullName.label   "Pale Moon Sync">
 +<!ENTITY syncBrand.fullName.label   "Libre Selene Sync">
 diff -Naur a/palemoon/locales/en-US/searchplugins/amazondotcom.xml b/palemoon/locales/en-US/searchplugins/amazondotcom.xml
---- a/palemoon/locales/en-US/searchplugins/amazondotcom.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/amazondotcom.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/amazondotcom.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,15 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -663,14 +663,14 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/amazondotcom.xml b/palemoon/lo
 -<Description>Amazon.com Search</Description>
 -<InputEncoding>ISO-8859-1</InputEncoding>
 -<Image width="16" height="16">data:image/x-icon;base64,AAABAAIAEBAAAAAAAAC0AQAAJgAAACAgAAAAAAAA6QIAANoBAACJUE5HDQoaCgAAAA1JSERSAAAAEAAAABAIBgAAAB/z/2EAAAF7SURBVDjLlZPLasJAFIaFRF+iVV+h6hO0GF+gVB9AaHwDt64qCG03tQgtdCFIuyhUelmGli66MXThSt24kNiFBUlAYi6ezjnNxSuawB/ITP7v/HNmJgQAEaZzpgHs/gwcTyTEXuXl2U6nA8ViEbK5HKler28CVRAwnB9ptVrAh8MrQuCaZ4iA8fzIqSgCxwzpTIaSuN/RWGwdYLwCUBQFZFkGSZLgqdmEE7YEN8VOAKyaSKUW4nNBAFmnYiKZpDRX1WqwBBzP089n5f/NEQsFL4WqqtsBWJlzDAJr5PwSMM1awEzzdxIbGI3Hvc6jCZeVFgRQRwpY7Qcw3ktgfpR8wLRxCPaot/X4GS95MppfF6DX9n2A3f+kAZycaT8bAZjU6r6B/duD6d3BYg9wQq/tkYzHY1blEiz5lmQyGc95mrO6r2CxgpjCBXgNsJVviolpXJiraeOIjJRE10juUa4sR8V+mO17VvmGqtuOcdNlwut8zTQJcJ0njifyB2bgTdKh6w4BAAAAAElFTkSuQmCCiVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACsElEQVRYw71XQWsTURBe2LQgeNKLB+tVemt6txcteNSD/QGC6VEIGDx5s+eKPQqFgJhLNdFLBWMP7cU0oSAWjB70koC9WHbVQ5SO8+XtS14mr7svyaYDH9m87Jv55puZt1nPi4yIzjMeMj7T9OwjI88455nGC1cZX+nsDESumJmPFDwIAqrX6z00Gg1qt9vjkJgFgUeuO16Vy3RjeZkyMzM9+MY1fsM9I9h9zyV7ZAznZrA4FAoFVwJ1z+WuOysrg1lnMolkHJX4k0igzI5sARYWF7vEZEk0rvO6iyUSuJfLJUqM7zYSqRDIra4OOUZPmNZsNrsl8UVTpkJAjh1GzmaSpJ8mAWmYeZB5urHRhW5SNOfUCCDo47W1bvPZsp2qAhipy3Nz1kaLG8dUCEBqM5AvpgElqFar01NgIZsdco7Zb7VasU2YigIYL5tjqCL7Q5YkFQXKlcqQ7DbHthIALk/IWAKor82xPIhshxWABCYioDMz51sexcVi0XoG4DPLIyvJjkTArK3scDQnRvO0MdTrUHGiKZCP4tNgO6BAEI08EQH9Z2Qow0hyPypJGIa9p6JWKCn4SA8jSKmJIDgyRvPJkcRxjfUwNGr/i8+Mo32iHzWiThBD4NM60bet9P77/ubA728RlTjMiwiH6zEEfvIrwdZFtQmMJ7W/ofIDBZD5m3mVZGwJcOP2kmILIlCkE45HoPWurwCSg0+UQRD4ZyXxId+T7gQb9+4q9sioY5ltrOG3L5vqXiiJffDx/aUi83ZJ7jr2ohcEu8Hh6/m+I7OWGiVxbWKHsz+O3vSOakqFQdsFgQeJUiKD7Wv9YKXBgCeSUC3v2kM5EJhlHDh3NcgcPlG1BXZu98sDmTuBa4fsMnz9fniJUaGzs+eMC540XuR0aDO2L8Y3qPyMcdOM+R/8XcqRA3qp9gAAAABJRU5ErkJggg==</Image>
--<Url type="text/html" method="GET" template="http://www.amazon.com/exec/obidos/external-search/">
+-<Url type="text/html" method="GET" template="https://www.amazon.com/exec/obidos/external-search/">
 -  <Param name="field-keywords" value="{searchTerms}"/>
 -  <Param name="mode" value="blended"/>
 -</Url>
--<SearchForm>http://www.amazon.com/</SearchForm>
+-<SearchForm>https://www.amazon.com/</SearchForm>
 -</SearchPlugin>
 diff -Naur a/palemoon/locales/en-US/searchplugins/answers.xml b/palemoon/locales/en-US/searchplugins/answers.xml
---- a/palemoon/locales/en-US/searchplugins/answers.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/answers.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/answers.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,16 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -682,15 +682,15 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/answers.xml b/palemoon/locales
 -<Description>Dictionary Search on Answers.com</Description>
 -<InputEncoding>UTF-8</InputEncoding>
 -<Image width="16" height="16">data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAABMLAAATCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////K////4f////E////5f///+n////P////mv///0EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8E////fv///+//////////////////////7NnP/+LFtv/////+////of///xYAAAAAAAAAAAAAAAD///8D////lf////////////j0//bi1v/OlXf/tGU9/6FCEv/OmH3////////////////D////FgAAAAAAAAAA////avPm4P/evaz/8NbI//7r3//23M3/xYRi/5kzAP/Df1z//u/l//749P/v4dn/+PPw/////6j///8B////GP///+W/f1//smM7//bczf/+69///uvf/9ytlP+ZMwD/5se3/+/f1//AgmP/nj0N/927qv/////+////QP///2z/////8NvQ/8WCYP/+69///uvf//7r3/+7ckz/pUkb/9m1ov+ePQ3/okUW/8+fh//38O3//////////5r///+t//////7y6v/Cflv/58Cr//DRwP/mwKv/okQU/8ODYv/cuqj/yZN4//Tq5f/+9e///vDn///////////Q////yf/////+7+b/05yA/65ZLv+9dVD/sF40/5kzAP/kvKb//vTu//Tr5v/7+Pb//vfz//707f//////////6f///8X//////vDm/+K4ov/KjGz//ure/8uNbf+jRBX/+OTX/+3b0v+jSBr/pk0h/717Wv/Wrpr//Pn4/////+b///+i//////7z7f/02Mj/wn5b//vl2P+uWS7/vXhU//v49//48u//1q6a/717Wv+oUSb/tWxH//jz8P/////K////V///////+/j//ure/8aFZP/fs5v/oEAQ/9q1o/+zaEL/1ayX//718P/+9/P/+PHu//jz8P//////////h////wr////O///////38v/YpYr/tGQ7/6ZLHf/06eX/s2dB/549Df/x49z//vDn//7x6f//////////8////yoAAAAA////R/////v/////7dXI/5kzAP+7cUv//vHp/+vYzv+bNwX/vHlY//38/P///////////////30AAAAAAAAAAAAAAAD///9n////+/z5+P++e1n/3LGc//7w5//++PT/0KKL/8OIa//9/Pv//////////5X///8GAAAAAAAAAAAAAAAAAAAAAP///0n////K///////////////////////////+/v7/////5v///2z///8CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////Cv///1f///+g////xP///8n///+r////bP///xoAAAAAAAAAAAAAAAAAAAAA+B////AH///AA///wAH//4AB//+AAP//AAD//wAA//8AAP//AAD//4AA//+AAf//wAP//+AD///wD////D///w==</Image>
--<Url type="text/html" method="GET" template="http://www.answers.com/main/ntquery">
+-<Url type="text/html" method="GET" template="https://www.answers.com/main/ntquery">
 -  <Param name="s" value="{searchTerms}"/>
 -</Url>
 -<Url type="application/x-suggestions+json" method="GET"
--     template="http://www.answers.com/main/startswith?output=json&amp;client=firefox&amp;s={searchTerms}"/>
+-     template="https://www.answers.com/main/startswith?output=json&amp;client=palemoon&amp;s={searchTerms}"/>
 -<SearchForm>http://www.answers.com/</SearchForm>
 -</SearchPlugin>
 diff -Naur a/palemoon/locales/en-US/searchplugins/bing.xml b/palemoon/locales/en-US/searchplugins/bing.xml
---- a/palemoon/locales/en-US/searchplugins/bing.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/bing.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/bing.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,18 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -712,7 +712,7 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/bing.xml b/palemoon/locales/en
 -    <SearchForm>https://www.bing.com/search</SearchForm>
 -</SearchPlugin>
 diff -Naur a/palemoon/locales/en-US/searchplugins/creativecommons.xml b/palemoon/locales/en-US/searchplugins/creativecommons.xml
---- a/palemoon/locales/en-US/searchplugins/creativecommons.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/creativecommons.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/creativecommons.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,14 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -724,14 +724,14 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/creativecommons.xml b/palemoon
 -<Description>Find photos, movies, music, and text to rip, sample, mash, and share.</Description>
 -<InputEncoding>utf-8</InputEncoding>
 -<Image width="16" height="16">data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAJUSURBVDiNjZO9S1thGMXPvTfJFbnkipNkLLS0ksFg0M0lf4CboNCEgIIg/RiKtEOn0qGWTtbVoBYcIji10I9J0ApWCjp0kRaXdhHjTW4+uGnur4NJ8GOwZ3nf4TnnfZ5z3scAdBGGYdyVdN+yrGHTNNOtVqsVhuG+pO+S3gE/LtV3BIxzPDJNc8FxHGN0dNRKpVIGoJ2dndr+/r5Vr9cl6bmkN0AoSQIEyHXdj5KYnZ3F932uolKpkM/nK5KQ9FmSCZwLOI7zQBLr6+vXiFdRLBaDtsiTTve3YrFYkM/nbyR3MDU1dSKpLumO+vr6Xruui+d5AFSrVVZWVtjY2KDRaABwdHTE4uIie3t7AJTLZaLRaFXSCyUSid1MJgOA53n09/eTTqdJJpPMzc2xurqKbduMj48Tj8fZ3d0FYHBw8FjSezmOU56fnwdgeXkZ27ap1WpUKhWazSZjY2Nks1kASqVSd4zp6eljSX/MtiHdRDpnEATyfb+bkiSVSqXu3TCM8xgHBga+dkY4OzvDdV2GhoZIJBLMzMxQKBSIRqNkMhlisRhbW1sAJJPJn5I+KB6Pv7poou/7rK2tsbm5SRAEXROXlpY4ODgAoFarYdu2J+llN8ZcLvffMeZyud+SGpLuCVBPT89jSRQKhRvJxWKxISmU9JTOT5Rk9Pb2fpHE5OQkJycn14inp6dMTEx4bdM/SbKAy8sk6WEkElmwLCuSSqUYGRmxgHB7e7t+eHgYazabgaRnkt7SeZnr63xbUtYwjGHTNNNhGP4F9iR9a6/zr4v1/wDE1D9XlC4rrAAAAABJRU5ErkJggg==</Image>
--<Url type="text/html" method="GET" template="http://search.creativecommons.org/">
+-<Url type="text/html" method="GET" template="https://search.creativecommons.org/">
 -  <Param name="q" value="{searchTerms}"/>
 -</Url>
 -<SearchForm>http://search.creativecommons.org/</SearchForm>
 -</SearchPlugin>
 diff -Naur a/palemoon/locales/en-US/searchplugins/disroot.xml b/palemoon/locales/en-US/searchplugins/disroot.xml
 --- a/palemoon/locales/en-US/searchplugins/disroot.xml	1969-12-31 21:00:00.000000000 -0300
-+++ b/palemoon/locales/en-US/searchplugins/disroot.xml	2023-11-30 02:19:06.839161508 -0300
++++ b/palemoon/locales/en-US/searchplugins/disroot.xml	2024-10-24 09:02:07.302739918 -0300
 @@ -0,0 +1,11 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
@@ -745,7 +745,7 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/disroot.xml b/palemoon/locales
 +  </Url>
 +</OpenSearchDescription>
 diff -Naur a/palemoon/locales/en-US/searchplugins/duckduckgo-palemoon.xml b/palemoon/locales/en-US/searchplugins/duckduckgo-palemoon.xml
---- a/palemoon/locales/en-US/searchplugins/duckduckgo-palemoon.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/duckduckgo-palemoon.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/duckduckgo-palemoon.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,16 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
@@ -765,7 +765,7 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/duckduckgo-palemoon.xml b/pale
 -  </Url>
 -</OpenSearchDescription>
 diff -Naur a/palemoon/locales/en-US/searchplugins/eBay.xml b/palemoon/locales/en-US/searchplugins/eBay.xml
---- a/palemoon/locales/en-US/searchplugins/eBay.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/eBay.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/eBay.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,19 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -777,18 +777,18 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/eBay.xml b/palemoon/locales/en
 -<Description>eBay - Online auctions</Description>
 -<InputEncoding>ISO-8859-1</InputEncoding>
 -<Image width="16" height="16">data:image/x-icon;base64,AAABAAIAEBAAAAAAAAB6AQAAJgAAACAgAAAAAAAAQgMAAKABAACJUE5HDQoaCgAAAA1JSERSAAAAEAAAABAIBgAAAB/z/2EAAAFBSURBVDjLtZPdK0MBGIf3J5Babhx3rinFBWuipaUskX9DYvkopqgV90q5UJpyp0OKrUWM2VrRsS9D0zZKHGaOnW1nj4vtypVtPPe/533r9746QAAOAJXfo5Yzgg44pHrcugon/6Sgo0b+XuAOZ2iZiVQmyPoDpIwmUkYTzqM7GsdDdC7F6Lbf8pzOkfWOouzqeZem2b+2AqAV8zjD8yVBqqcf2b7C66yNiMGMfixIQSvi8Mp0LEbR5ADq1QSKWM+Gx0RC9nOZ2GLzwlIWdPWiuNzk4w/EpThNkyEAXKEP2ud8KGId2sspilhPMrmNwzfCuqePr/xbSfC5I/I0MMSj2YJ3z49gDdO2cEOrLUowJpE9G0QRG1ClKbR0EIdvmOPYcnUtnN+vsnZiQC1k/qnGagQ1n3LNzySUJZVskitnmr8BlQG7T2hvgxsAAAAASUVORK5CYIKJUE5HDQoaCgAAAA1JSERSAAAAIAAAACAIBgAAAHN6evQAAAMJSURBVFjD7ZddSFNhGMeHXXQTZFFCWfR1pRhUECQlBdWVToo+6KYu1KigtDASG5qUfZgFZvahEDosECPDktKZS1FL+1DRnEvdUptjug91X2dnZzv/3vO6OZbWnR4v9sADL+fs7P97/s/znu2VAJD4UkpSSdKG+QubTyPBr+sXz8XCR64fIAHihVTis0SsUAoAVhEBrBKIHCGAEMB/ARi3F5LkbpS2WMRzYEEBXC2tsD6T03R9agsCGLNyqPw6CXmrBT06JvhbPHZwmkdwtR0B138PPKOHgzXD5jLAy3tmibo4K9weZwDAazJj/FQKRnfugfHMeRiTz0K3Ixam1HQKcPC+Fisu9NK1P08Uj4DleHgMdXC+WQ7nu3UEOhFMfTQcVUvQ1H4IN2sj8H2k7K+2TqCc3GseyA8AmDOzMBq7D9bS8sAr6nEJdNt3UbHVF1XQGtmZew8bTPT6tWoD3KpsUvlR8NxUoEICMvl6KQo+xqCwcRs4T8Ax5c8bFExjbAgAjO7aS8VsLypgq3g5nWStjztAhWRVhqAqeB6IuKTClkw1eNYEbrCQQBwD8yGGOsAooogLYejQPKBi7UPF9DkH+ezd+o141ZkUPAOC+L9SAMivNc7q46YMNSLTe4n1kaQF4XD3ZIDTPgU3XEYciKcAHrsGJS1xKFBGgyVzouiT4VbdGhjt/cEA5isyKsaz7jl3we7bg7Rqf6j0LoSldON4wWcqJDgQNGTN++l13vELA+MK6kKd6iryFOvxtidt9i5gO7owdjKJQliflNAU1pas6xQgnAzg1ux+lJEdILixNr0Pq9JUUA8NwVG9DM73G0jlcnh+V4BpjIWzJmIGQIjnXw5TiDuKSEwxurm3ITc8DNO51BnrLbIcsrW0dNA6RxgUKU1UdGVqLy5X6qGzTLvlnewiBZyGs3Yz6X8UeaYI3olvZDhzwLumZ+eHvooCCC0Q5VUsb4unwycM4YIDqA01tPqmgbzQr2EIYPECiPm33LYoDiZSsY9moh9O/Znoa4d9HkXtPg2pX/cPKCoRQ+ocZa4AAAAASUVORK5CYII=</Image>
--<Url type="application/x-suggestions+json" method="GET" template="http://anywhere.ebay.com/services/suggest/">
+-<Url type="application/x-suggestions+json" method="GET" template="https://anywhere.ebay.com/services/suggest/">
 -  <Param name="s" value="0"/>
 -  <Param name="q" value="{searchTerms}"/>
 -</Url>
--<Url type="text/html" method="GET" template="http://rover.ebay.com/rover/1/711-47294-18009-3/4">
--  <Param name="mpre" value="http://shop.ebay.com/?_nkw={searchTerms}"/>
+-<Url type="text/html" method="GET" template="https://rover.ebay.com/rover/1/711-47294-18009-3/4">
+-  <Param name="mpre" value="https://shop.ebay.com/?_nkw={searchTerms}"/>
 -</Url>
 -<SearchForm>http://search.ebay.com/</SearchForm>
 -</SearchPlugin>
 -
 diff -Naur a/palemoon/locales/en-US/searchplugins/ecosia.xml b/palemoon/locales/en-US/searchplugins/ecosia.xml
---- a/palemoon/locales/en-US/searchplugins/ecosia.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/ecosia.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/ecosia.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
@@ -804,7 +804,7 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/ecosia.xml b/palemoon/locales/
 -    <Url type="application/x-suggestions+json" template="https://ac.ecosia.org/autocomplete/?q={searchTerms}&amp;type=list"/>
 -</OpenSearchDescription>
 diff -Naur a/palemoon/locales/en-US/searchplugins/ekoru.xml b/palemoon/locales/en-US/searchplugins/ekoru.xml
---- a/palemoon/locales/en-US/searchplugins/ekoru.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/ekoru.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/ekoru.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
@@ -818,20 +818,20 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/ekoru.xml b/palemoon/locales/e
 -    <Url type="application/x-suggestions+json" template="https://ac.ekoru.org/?ext=palemoon&amp;q={searchTerms}"/>
 -</OpenSearchDescription>
 diff -Naur a/palemoon/locales/en-US/searchplugins/list.txt b/palemoon/locales/en-US/searchplugins/list.txt
---- a/palemoon/locales/en-US/searchplugins/list.txt	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/locales/en-US/searchplugins/list.txt	2023-11-30 01:57:30.190191038 -0300
-@@ -1,8 +1,2 @@
+--- a/palemoon/locales/en-US/searchplugins/list.txt	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/locales/en-US/searchplugins/list.txt	2024-10-24 09:51:28.993030428 -0300
+@@ -1,8 +1 @@
 -duckduckgo-palemoon
 -mojeek
 -bing
 -ecosia
 -ekoru
 -twitter
-+disroot
- wikipedia
+-wikipedia
 -yahoo
++disroot
 diff -Naur a/palemoon/locales/en-US/searchplugins/mojeek.xml b/palemoon/locales/en-US/searchplugins/mojeek.xml
---- a/palemoon/locales/en-US/searchplugins/mojeek.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/mojeek.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/mojeek.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,11 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
@@ -846,7 +846,7 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/mojeek.xml b/palemoon/locales/
 -  </Url>
 -</OpenSearchDescription>
 diff -Naur a/palemoon/locales/en-US/searchplugins/twitter.xml b/palemoon/locales/en-US/searchplugins/twitter.xml
---- a/palemoon/locales/en-US/searchplugins/twitter.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/twitter.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/twitter.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,15 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -864,8 +864,30 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/twitter.xml b/palemoon/locales
 -  <Param name="source" value="desktop-search"/>
 -</Url>
 -</SearchPlugin>
+diff -Naur a/palemoon/locales/en-US/searchplugins/wikipedia.xml b/palemoon/locales/en-US/searchplugins/wikipedia.xml
+--- a/palemoon/locales/en-US/searchplugins/wikipedia.xml	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/locales/en-US/searchplugins/wikipedia.xml	1969-12-31 21:00:00.000000000 -0300
+@@ -1,18 +0,0 @@
+-<!-- This Source Code Form is subject to the terms of the Mozilla Public
+-   - License, v. 2.0. If a copy of the MPL was not distributed with this
+-   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+-
+-<SearchPlugin xmlns="http://www.mozilla.org/2006/browser/search/">
+-<ShortName>Wikipedia (en)</ShortName>
+-<Description>Wikipedia, the free encyclopedia</Description>
+-<InputEncoding>UTF-8</InputEncoding>
+-<Image width="16" height="16">data:image/x-icon;base64,AAABAAIAEBAAAAAAAAA4AQAAJgAAACAgAAAAAAAAJAMAAGQBAACJUE5HDQoaCgAAAA1JSERSAAAAEAAAABAIBgAAAB/z/2EAAAEFSURBVDjLxZPRDYJAEESJoQjpgBoM/9IBtoAl4KcUQQlSAjYgJWAH0gPmyNtkzEEuxkQTPzawc3Ozc3MQTc/JfVPR/wW6a+eKQ+Hyfe54B2wvrfXVqXLDfTCMd3j0VHksrTcH9bl2aZq+BCgEwCCPj9E4TdPYGj0C9CYAKdkmBrIIxiIYbvpbb2sSl8AiA+ywAbJE5YLpCImLU/WRDyIAWRgu4k1s4v50ODru4haYSCk4ntkuM0wcMAINXiPKTJQ9CfgB40phBr8DyFjGKkKEhYhCY4iCDgpAYAM2EZBlhJnsZxQUYBNkSkfBvjDd0ttPeR0mxREQ+OhfYOJ6EmL+l/qzn2kGli9cAF3BOfkAAAAASUVORK5CYIKJUE5HDQoaCgAAAA1JSERSAAAAIAAAACAIBgAAAHN6evQAAAIKSURBVFjD7ZdBSgNRDIYLguAB7FLwAkXwBl0JgiDYjQcY8ARduBJKu3I5C0EoWDxAT9AL9AK9QBeCIHQlCM/3DZOSmeZNZ2r1bQyEGV7yXv7kJZlJq6XIOXfs+crzwPPTnvnR863n05ZFufDD/T595Q4eauM37u/pWYwfeX53cegcABcuHg0AkEQE8AKAu4gAXv8BrAEMh0PXbrddt9t1vV4v406nk62laeqm02n2LjKYIuK5WCyyfeiLDF32yLn6TJ5mBFarlev3+9nBMMqsabkYhmezWcEd2ctTE/tYBwhgt14BhtmAV2VaLpdrAHioCW+VdwWy9IMAUBQjJcQFTwGqvcTD+Xy+oc8askZJyAYrnKEokCeWLpQkSSZvBIANYgSDVVEQQJaeyHQu1QIgiQNb6AmrTtaQ9+RFSLa1D4iXgfsrVITloeSFFZlaAEjAUMaXo2DJWQtVRe1OKF5aJUkf0NdglXO5VzQGoI2USwwD3LEl590CtdO3QBoT5WSFV+Q63Oha17ITgMlkslGSGBWPdeNiDR2SL1B6zQFINmOAkFOW5eTSURCdvX6OdUlapaWjsKX0dgOg26/VWHSUKhrPz35ISKwq76R9Wx+kKgC1f0o5mISsypUG3kPj2L/lDzKYvEUwzoh2JtPRdQQAo1jD6afne88H1oTMeH6ZK+x7PB/lQ/CJtvkNEgDh1dr/bVYAAAAASUVORK5CYII=</Image>
+-<Url type="application/x-suggestions+json" method="GET" template="https://en.wikipedia.org/w/api.php">
+-  <Param name="action" value="opensearch"/>
+-  <Param name="search" value="{searchTerms}"/>
+-</Url>
+-<Url type="text/html" method="GET" template="https://en.wikipedia.org/wiki/Special:Search">
+-  <Param name="search" value="{searchTerms}"/>
+-</Url>
+-<SearchForm>http://en.wikipedia.org/wiki/Special:Search</SearchForm>
+-</SearchPlugin>
 diff -Naur a/palemoon/locales/en-US/searchplugins/yahoo.xml b/palemoon/locales/en-US/searchplugins/yahoo.xml
---- a/palemoon/locales/en-US/searchplugins/yahoo.xml	2023-09-28 18:08:21.000000000 -0300
+--- a/palemoon/locales/en-US/searchplugins/yahoo.xml	2024-10-08 12:10:17.000000000 -0300
 +++ b/palemoon/locales/en-US/searchplugins/yahoo.xml	1969-12-31 21:00:00.000000000 -0300
 @@ -1,17 +0,0 @@
 -<!-- This Source Code Form is subject to the terms of the Mozilla Public
@@ -886,8 +908,8 @@ diff -Naur a/palemoon/locales/en-US/searchplugins/yahoo.xml b/palemoon/locales/e
 -<SearchForm>https://search.yahoo.com/</SearchForm>
 -</SearchPlugin>
 diff -Naur a/palemoon/locales/generic/profile/bookmarks.html.in b/palemoon/locales/generic/profile/bookmarks.html.in
---- a/palemoon/locales/generic/profile/bookmarks.html.in	2023-09-28 18:08:21.000000000 -0300
-+++ b/palemoon/locales/generic/profile/bookmarks.html.in	2023-12-03 03:54:53.030204483 -0300
+--- a/palemoon/locales/generic/profile/bookmarks.html.in	2024-10-08 12:10:17.000000000 -0300
++++ b/palemoon/locales/generic/profile/bookmarks.html.in	2024-10-24 09:02:07.308739917 -0300
 @@ -11,9 +11,6 @@
      <DT><H3 PERSONAL_TOOLBAR_FOLDER="true" ID="rdf:#$FvPhC3">@bookmarks_toolbarfolder@</H3>
  <DD>@bookmarks_toolbarfolder_description@

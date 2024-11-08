@@ -12,6 +12,10 @@ export MOZ_BUILD_DATE "${SOURCE_DATE_EPOCH}"
 # build/install
 export M4 "gm4"
 if {
+	# inflateValidate
+	if { arbor-utils-sed ./platform/media/libpng/pngrutil.c "s;0x1281;0x1290;" }
+	# max stack size
+	if { arbor-utils-sed ./platform/js/xpconnect/src/XPCJSContext.cpp "s;8 \* 1024 \* 1024;2 * 1024 * 1024;" }
 	# set the default stack size to the expected amount
 	define WL "-D_GNU_SOURCE -Wl,--no-keep-memory -Wl,-z,stack-size=2097152"
 	multisubstitute {
