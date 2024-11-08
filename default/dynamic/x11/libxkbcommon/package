@@ -1,8 +1,8 @@
 name:libxkbcommon
-version:1.6.0
+version:1.7.0
 license:mit
 description:Keyboard handling library.
-cksum:a98e49c0a932b92e8b409237d7813dda3076b9672d204847a6f3ebb2151d590ce7ee781ffebc7954454049a3fb32cf96b1f885a501ad97c22894039540de0f06
+cksum:d5a1347769c248751d5f2125131c6eb3e738a673dcadcc16ddd5fca808ed2018e26cd1a794afdb9a6b80d615c1255225cf92cfc88cb973c67d5ffbfba01853b0
 urls{
 https://xkbcommon.org/download/libxkbcommon-$version.tar.xz
 }
