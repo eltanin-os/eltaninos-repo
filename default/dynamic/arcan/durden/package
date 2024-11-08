@@ -1,10 +1,11 @@
 name:durden
-version:20231218203421
+version:e6b4d0691a
 license:bsd-3
 description:Desktop Environment for Arcan.
-cksum:96f4b35a770aa3f892ea87bca36a8218132a3094dd9600a18ff4d453229f72a03f1d3cba3ddfb7153f34acb11af9175393c5e0deea122a4c357e986c14cc3c7d
+cksum:3d95875cd3cfc04455f40e5ef1db11f60683ea50e4725d61f2b07d6edef37e9bdf05eb70b5c5ddf0f3c4e1f86b76309a3bf871fc53066cf03c1fda5a67823b78
+src:Durden-$version
 urls{
-https://downloads.eltaninos.org/mirrors/durden-$version.tar.lz
+https://chiselapp.com/user/letoram/repository/durden/tarball/$version/Durden-$version.tar.gz
 }
 hostdeps{
 stdenv
