@@ -1,10 +1,10 @@
 name:xarcan
-version:20231103082845
+version:81667d43eef33bc4b9c55bbf4ad01203c4decc8d
 license:mit
 description:Patched Xserver that bridge connections to Arcan.
-cksum:b543fc4ce82f33a80277bb972142061e07346ca5a6475edc1d396c15c86853379c8f4c4e1db6c5f1782693686df731ad00a2f0d9669b1bcfb817679287a2f040
+cksum:2e0f066cc8a8b73c76672b34b5515a8915fc2327b64dbd2767291ff8babb94440e283bc2d9a8b981fe268cbbbef17abdc465b17ad3b46807823558a801fec869
 urls{
-https://downloads.eltaninos.org/mirrors/xarcan-$version.tar.lz
+https://github.com/letoram/xarcan/archive/$version.tar.gz
 }
 hostdeps{
 meson
