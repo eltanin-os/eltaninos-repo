@@ -1,10 +1,10 @@
 name:openexr
-version:3.2.2
+version:3.3.1
 license:bsd-3
 description:High dynamic-range (HDR) image file format.
-cksum:3db0fde7ab66d614c4c6f5356e4704576e360de688a280a0e1dabfa71f159aaba239f5a02e0fc00b4b6e46f1527128164bdcecb74194844c241c7860bccb4fdb
+cksum:92527c7c0b3435280910875e66146f95669245323edc64047158d85c27d48b7fd9d876abe9df13ab40c16f02f2dea1b8a8563a3084acaff3479b6e501680a5d8
 urls{
-https://github.com/AcademySoftwareFoundation/openexr/archive/refs/tags/v$version.tar.gz
+https://github.com/AcademySoftwareFoundation/openexr/releases/download/v$version/openexr-$version.tar.gz
 }
 hostdeps{
 cmake
