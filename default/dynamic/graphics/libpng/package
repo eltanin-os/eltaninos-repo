@@ -1,8 +1,8 @@
 name:libpng
-version:1.6.42
+version:1.6.44
 license:libpng
 description:Portable Network Graphics library.
-cksum:996c0b042322098c25143f50ea12c2da1072f99007b7c5bd0d88d969e2298f9324bca60177a8e76e620de5f1636a2b1f360a24ec2612c1c599ff8b07789d09cc
+cksum:1d3954e0a8b65d14f645dcce2e4f8e1c9d948384a43ed3574c25f9062c2e68b0eb7df36f1b71cc232eceffe07922d71e6da770d7a2fb289504bb8ca5cf91f9d8
 urls{
 https://downloads.sourceforge.net/libpng/libpng-$version.tar.xz
 }
