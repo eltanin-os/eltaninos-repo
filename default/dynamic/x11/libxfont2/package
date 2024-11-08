@@ -1,8 +1,8 @@
 name:libxfont2
-version:2.0.6
+version:2.0.7
 license:mit
 description:X.Org X11 libXfont2 runtime library.
-cksum:3eca3f03c80e91956b952d4dad27364bbd78e5663ad1e38d353cffe6cacce1c641c730c0fd8dc292f1d3a6bc40d0c5139fe9de2fcae972d791683d7a5d080e7c
+cksum:15643e0317fe0cb4d69fe67174a7927e33384376441af6bc9a226af60081c0ab11c5678af9d46623eb74d0ec0b73580e3560868bf4e4c92d3d7c6b83679fdd8a
 src:libXfont2-$version
 urls{
 https://www.x.org/pub/individual/lib/libXfont2-$version.tar.xz
