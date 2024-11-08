@@ -1,10 +1,10 @@
 name:ecore
-version:20240212102659
+version:b62cabbf6af81e7cfc13fe1eb9d59eea24e1f0ee
 license:unlicense
 description:Eltanin core utilities.
-cksum:23073e9c071d73eb28e54935454535bc02abf464bc576f01f6398bb5faf6364ffbea1388154730651cd1d317d9783c63f435b4f3cbb7147e3d971eb4a4a2b440
+cksum:e73b76f2ec3ccad20cc5a539f3954eefccdf6e13fd2d80985e0c8b0919a7312675590b853d6cd5264d4de9e5efafb7ce4eaca0ca1ec0cd0d4c4dfa717eb070f5
 urls{
-http://downloads.eltaninos.org/sources/ecore/ecore-$version.tar.lz
+https://git.eltaninos.org/ecore/snapshot/ecore-$version.tar.gz
 }
 hostdeps{
 stdenv
